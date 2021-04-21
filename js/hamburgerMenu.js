@@ -7,13 +7,42 @@ navButton.addEventListener("click", addClass);
 socialsButton.addEventListener("click", addClass);
 
 function addClass(event) {
-  if (event.target.className === "far fa-bars") {
-    navContainer.classList.toggle("expand");
-    socialsContainer.classList.remove("expand");
+  // main-nav expand
+  if (event.target.classList.contains("fa-bars")) {
+    event.target.outerHTML = `<i class="fas fa-times main-nav"></i>`;
+    if (navContainer.classList.contains("slide-out") || navContainer.classList.contains("wait")) {
+      navContainer.classList.add("slide-in");
+      navContainer.classList.remove("wait");
+      navContainer.classList.remove("slide-out");
+      if (socialsContainer.classList.contains("slide-in")) {
+        socialsContainer.classList.remove("slide-in");
+        socialsContainer.classList.add("slide-out");
+        socialsButton.innerHTML = `<i class="fas fa-ellipsis-h"></i>`;
+      }
+    }
+  } else if (event.target.classList.contains("main-nav")) {
+    event.target.outerHTML = `<i class="far fa-bars"></i>`;
+    navContainer.classList.remove("slide-in");
+    navContainer.classList.add("slide-out");
   }
-  if (event.target.className === "fas fa-ellipsis-h") {
-    socialsContainer.classList.toggle("expand");
-    navContainer.classList.remove("expand");
+
+  // socials expand
+  if (event.target.classList.contains("fa-ellipsis-h")) {
+    event.target.outerHTML = `<i class="fas fa-times socials-nav"></i>`;
+    if (socialsContainer.classList.contains("slide-out") || socialsContainer.classList.contains("wait")) {
+      socialsContainer.classList.add("slide-in");
+      socialsContainer.classList.remove("wait");
+      socialsContainer.classList.remove("slide-out");
+      if (navContainer.classList.contains("slide-in")) {
+        navContainer.classList.remove("slide-in");
+        navContainer.classList.add("slide-out");
+        navButton.innerHTML = `<i class="far fa-bars"></i>`;
+      }
+    }
+  } else if (event.target.classList.contains("socials-nav")) {
+    event.target.outerHTML = `<i class="fas fa-ellipsis-h"></i>`;
+    socialsContainer.classList.remove("slide-in");
+    socialsContainer.classList.add("slide-out");
   }
 }
 

@@ -83,9 +83,13 @@ a {
 
 /* Header */
 header {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
   margin-top: 0;
   padding-top: 0;
-  background: var(--off-white);
 }
 
 .search-bar form {
@@ -109,7 +113,7 @@ header {
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: 10px 25px;
   background: var(--off-white);
   z-index: 100;
 }
@@ -123,20 +127,72 @@ header {
   cursor: pointer;
   padding: 0;
   color: var(--primary);
+  background: none;
+  outline: none;
+}
+
+.hamburger-menu .main-nav-mobile:focus,
+.hamburger-menu .search:focus,
+.hamburger-menu .social-icons:focus {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main-nav-mobile {
+  min-width: 37px; /* To stop flex from changing positioning due to letter change */
 }
 
 .main-navigation,
 .social-icons {
   display: none;
-  height: 100vh;
-  padding-bottom: 48px; /* Padding due to navigation being on bottom - with a fixed height of 48px */
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 68px; /* Padding due to navigation being on bottom - with a fixed height of 48px */
   justify-content: center;
   align-items: center;
+  background: var(--off-white);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: -100%;
+  /* transform: translateX(-100%); */
+  transition: 0.3s ease-in;
 }
 
-.expand {
-  /* Apply this in javascript when button clicked */
+/* Apply this in javascript when button clicked */
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
   display: flex;
+}
+.slide-out {
+  animation: slide-out 0.5s forwards;
+  display: flex;
+}
+
+@keyframes slide-in {
+  100% {
+    left: 50%;
+    top: 50%;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    left: -100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.main-navigation ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .main-navigation ul,
@@ -151,6 +207,15 @@ header {
   font-weight: 900;
   font-size: 34px;
   color: var(--primary);
+}
+
+.nav-link i {
+  font-size: 45px;
+  margin: 25px 0;
+}
+
+.main-navigation ul li {
+  padding: 25px 0;
 }
 
 @media screen and (min-width: 850px) {
