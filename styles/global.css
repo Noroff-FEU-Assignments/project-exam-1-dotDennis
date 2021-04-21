@@ -1,0 +1,172 @@
+/* font-family: 'Cabin Sketch', cursive;
+font-family: 'Roboto', sans-serif; */
+
+/* Variables */
+:root {
+  --primary: #161719;
+  --primary-op5: #16171925;
+  --accent: #37517c;
+  --off-white: #ededec;
+  --warn: #f93343;
+  --success: #90c362;
+}
+
+/* Global Resets */
+html {
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--off-white);
+  color: var(--primary);
+}
+
+li {
+  list-style: none;
+}
+
+/* Global Font Styling */
+
+/* Logo */
+h1 {
+  font-family: "Cabin Sketch", cursive;
+  width: 100%;
+  text-align: center;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 64px;
+}
+
+/* Page specific titles */
+h2 {
+  font-weight: 900;
+  font-size: 34px;
+}
+
+h3 .titles {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+h3 .sub-titles {
+  font-weight: 500;
+  font-size: 26px;
+}
+
+/* Paragraphs like, blogs, about me, & other */
+p .blog-txt {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+/* Part of link which is not = anchor tag */
+p .link-txt {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+a {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* Header */
+header {
+  margin-top: 0;
+  padding-top: 0;
+  background: var(--off-white);
+}
+
+.search-bar form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar form .search-field {
+  height: 29.75px;
+  background: var(--primary-op5);
+  border: none;
+}
+
+.search-bar {
+  display: none;
+}
+
+.hamburger-menu {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  background: var(--off-white);
+  z-index: 100;
+}
+
+.hamburger-menu .search,
+.hamburger-menu .main-nav-mobile,
+.hamburger-menu .socials {
+  border: none;
+  font-size: 34px;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 0;
+  color: var(--primary);
+}
+
+.main-navigation,
+.social-icons {
+  display: none;
+  height: 100vh;
+  padding-bottom: 48px; /* Padding due to navigation being on bottom - with a fixed height of 48px */
+  justify-content: center;
+  align-items: center;
+}
+
+.expand {
+  /* Apply this in javascript when button clicked */
+  display: flex;
+}
+
+.main-navigation ul,
+.social-icons ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--primary);
+}
+
+@media screen and (min-width: 850px) {
+  .hamburger-menu {
+    display: none;
+  }
+  .search-bar {
+    display: block;
+  }
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: 49rem auto 5rem auto;
+  border-top: 2px solid var(--primary);
+}
