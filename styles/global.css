@@ -1,14 +1,32 @@
-/* font-family: 'Cabin Sketch', cursive;
-font-family: 'Roboto', sans-serif; */
+/* 
+-----------------------------  
+----  Table of content   ----
+-----------------------------
+----  1. Variables       ----
+----  2. Global Resets   ----
+----  3. Font Styling    ----
+----  4. Header          ----
+----  5. Footer          ----
+-----------------------------
+-----------------------------
+-----------------------------
+*/
+
+@font-face {
+  font-family: "Game Played";
+  src: local("Game Played"), local("GamePlayed"), url("fonts/GamePlayed.otf") format("opentype");
+}
 
 /* Variables */
 :root {
   --primary: #161719;
-  --primary-op5: #16171925;
-  --accent: #37517c;
+  --primary-op25: #16171925;
+  --primary-op65: #16171965;
+  --accent: #90c362;
+  --accent-75op: #90c36275;
+  --link: #1e6d81;
   --off-white: #ededec;
   --warn: #f93343;
-  --success: #90c362;
 }
 
 /* Global Resets */
@@ -39,12 +57,19 @@ li {
 
 /* Logo */
 h1 {
-  font-family: "Cabin Sketch", cursive;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Game Played", sans-serif;
+  line-height: 1.2;
+  margin-top: 0; /* removes random padding */
   text-align: center;
   color: var(--accent);
-  font-weight: 700;
-  font-size: 64px;
+  text-shadow: var(--accent-75op) -5px 0px 1px;
+  font-weight: 400;
+  font-size: 76px;
+  -webkit-text-stroke: var(--primary) 1px;
 }
 
 /* Page specific titles */
@@ -78,20 +103,10 @@ p .link-txt {
 a {
   font-size: 20px;
   font-weight: 400;
-  color: var(--accent);
+  color: var(--link);
 }
 
 /* Header */
-header {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  margin-top: 0;
-  padding-top: 0;
-}
-
 .search-bar form {
   display: flex;
   align-items: center;
@@ -99,7 +114,7 @@ header {
 
 .search-bar form .search-field {
   height: 29.75px;
-  background: var(--primary-op5);
+  background: var(--primary-op25);
   border: none;
 }
 
@@ -114,10 +129,16 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 10px 25px;
-  background: var(--off-white);
+  background: var(--primary);
   z-index: 100;
 }
 
+.menu-wrapper {
+  background: var(--primary);
+  height: 195px;
+}
+
+/* mobile menu */
 .hamburger-menu .search,
 .hamburger-menu .main-nav-mobile,
 .hamburger-menu .socials {
@@ -126,36 +147,51 @@ header {
   font-weight: 900;
   cursor: pointer;
   padding: 0;
-  color: var(--primary);
+  color: var(--off-white);
   background: none;
   outline: none;
 }
 
+.fa-times {
+  color: var(--accent);
+  animation: fade-in 0.5s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .hamburger-menu .main-nav-mobile:focus,
 .hamburger-menu .search:focus,
-.hamburger-menu .social-icons:focus {
+.hamburger-menu .socials:focus {
   -webkit-tap-highlight-color: transparent;
 }
 
 .main-nav-mobile {
-  min-width: 37px; /* To stop flex from changing positioning due to letter change */
+  min-width: 37px; /* To stop flex from changing positioning due to html change */
 }
 
 .main-navigation,
 .social-icons {
   display: none;
   position: fixed;
-  height: 100%;
-  width: 100%;
+  height: 101%;
+  width: 101%;
   padding-bottom: 68px; /* Padding due to navigation being on bottom - with a fixed height of 48px */
   justify-content: center;
   align-items: center;
-  background: var(--off-white);
+  background: var(--primary);
   transform: translate(-50%, -50%);
   top: 50%;
   left: -100%;
   /* transform: translateX(-100%); */
   transition: 0.3s ease-in;
+  z-index: 98;
 }
 
 /* Apply this in javascript when button clicked */
@@ -163,6 +199,7 @@ header {
 .slide-in {
   animation: slide-in 0.5s forwards;
   display: flex;
+  opacity: 0%;
 }
 .slide-out {
   animation: slide-out 0.5s forwards;
@@ -173,6 +210,7 @@ header {
   100% {
     left: 50%;
     top: 50%;
+    opacity: 100%;
   }
 }
 
@@ -181,11 +219,13 @@ header {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    opacity: 100%;
   }
   100% {
     left: -100%;
     top: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0%;
   }
 }
 
@@ -206,7 +246,11 @@ header {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 34px;
-  color: var(--primary);
+  color: var(--off-white);
+}
+
+.logo-link {
+  text-decoration: none;
 }
 
 .nav-link i {
@@ -217,13 +261,122 @@ header {
 .main-navigation ul li {
   padding: 25px 0;
 }
+@media screen and (min-width: 700px) {
+  h1 {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .menu-wrapper {
+    height: 120px;
+  }
+}
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 1000px) {
   .hamburger-menu {
     display: none;
   }
+  .logo-link {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  h1 {
+    font-size: 96px;
+    position: relative;
+    width: 60vw;
+    margin-top: unset;
+    line-height: 1;
+    margin-top: 20px;
+  }
+
+  .main-navigation,
+  .main-navigation ul,
+  .main-navigation ul li,
+  .social-icons,
+  .social-icons ul,
+  .social-icons ul li,
   .search-bar {
-    display: block;
+    all: unset;
+  }
+  .nav-link {
+    color: var(--off-white);
+  }
+  .search-bar form .search-field {
+    background: var(--off-white);
+    height: 35px;
+  }
+  .search-bar input,
+  .search-bar button {
+    color: var(--primary);
+  }
+  .main-navigation .nav-link {
+    color: var(--primary);
+  }
+
+  .social-icons .nav-link i {
+    font-size: 40px;
+  }
+
+  .social-icons {
+    padding-right: 5%;
+    padding-top: 8px;
+  }
+  .search-bar {
+    padding-left: 5%;
+  }
+  /* Magic numbers to make social icons & search bar perfect widths */
+  .search-bar form {
+    max-width: 160.66px;
+  }
+  .search-bar input.search-field {
+    max-width: calc(100% - 25.34px);
+  }
+  /* ends here */
+
+  .menu-wrapper {
+    padding-top: 74px; /* to align with logo */
+    padding-bottom: 74px;
+    height: unset;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-navigation {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 242px;
+    margin-top: 30px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .main-navigation li a {
+    margin: 0 50px;
+  }
+}
+@media screen and (min-width: 1270px) {
+  .menu-wrapper {
+    padding-bottom: 20px;
+    padding-top: 12px;
+  }
+  .main-navigation {
+    top: 122px;
+  }
+  h1 {
+    line-height: 1.2;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-height: 500px) and (max-width: 700px) {
+  h1 {
+    font-size: 40px;
+  }
+  .menu-wrapper {
+    height: 75px;
   }
 }
 

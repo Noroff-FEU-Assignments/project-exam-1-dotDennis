@@ -50,8 +50,12 @@ window.addEventListener("resize", checkWidth);
 
 function checkWidth() {
   if (window.matchMedia("(min-width: 850px)").matches) {
-    socialsContainer.classList.remove("expand");
-    navContainer.classList.remove("expand");
+    socialsContainer.classList.remove("slide-out", "slide-in");
+    navContainer.classList.remove("slide-out", "slide-in");
+    socialsContainer.className = "social-icons wait";
+    navContainer.className = "main-navigation wait";
+    navButton.innerHTML = `<i class="far fa-bars"></i>`;
+    socialsButton.innerHTML = `<i class="fas fa-ellipsis-h"></i>`;
   } else {
     return;
   }

@@ -11,12 +11,13 @@
     <link rel="shortcut icon" sizes="16x16" type="image/x-icon" href="img/favicon-16x16.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f0bf46977e.js" crossorigin="anonymous"></script>
     <!-- Style components -->
     <link rel="stylesheet" href="styles/global.css" />
     <!-- Page specific styles -->
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
   <body>
     <header>
@@ -25,22 +26,24 @@
         <button class="socials"><i class="fas fa-ellipsis-h"></i></button>
         <button class="search" type="submit"><i class="far fa-search"></i></button>
       </div>
-      <div>
-        <div class="search-bar">
+      <div class="menu-wrapper">
+        <div class="search-bar fixed">
           <form action="">
             <input class="search-field" type="text" />
             <button class="search-field search" type="submit"><i class="far fa-search"></i></button>
           </form>
         </div>
-        <div class="main-navigation wait">
+        <a class="logo-link" href=""><h1>Dennis Løvold</h1></a>
+
+        <nav class="main-navigation wait fixed">
           <ul>
             <li><a class="nav-link" href="/">home</a></li>
             <li><a class="nav-link" href="#">blog</a></li>
             <li><a class="nav-link" href="#">about</a></li>
             <li><a class="nav-link" href="#">contact</a></li>
           </ul>
-        </div>
-        <div class="social-icons wait">
+        </nav>
+        <nav class="social-icons wait fixed">
           <ul>
             <li>
               <a href="#" class="nav-link"><i class="fab fa-linkedin"></i></a>
@@ -55,12 +58,33 @@
               <a href="#" class="nav-link"><i class="fab fa-twitter"></i></a>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
-      <h1>Dennis Løvold</h1>
     </header>
     <main>
-      <div><p>content</p></div>
+      <div class="carousel">
+        <button aria-label="previous-slide" class="carousel-button left"><i class="far fa-chevron-left"></i></button>
+        <div class="carousel__items-container">
+          <div class="carousel__items">
+            <div class="carousel__post current-item">
+              <img class="item__image" src="img/erik-mclean-I6zLOuPXh6I-unsplash.jpg" alt="blog post title" />
+              <h2>title</h2>
+              <p>By <a href="/">Dennis Løvold</a> / 14.04.21</p>
+            </div>
+            <div class="carousel__post">
+              <img class="item__image" src="img/esther-tuttle-F_udAnJZl94-unsplash.jpg" alt="blog post title" />
+              <h2>title</h2>
+              <p>By <a href="/">Dennis Løvold</a> / 15.04.21</p>
+            </div>
+            <div class="carousel__post">
+              <img class="item__image" src="img/michael-dziedzic-0TPT2B2VsxU-unsplash.jpg" alt="blog post title" />
+              <h2>title</h2>
+              <p>By <a href="/">Dennis Løvold</a> / 16.04.21</p>
+            </div>
+          </div>
+        </div>
+        <button aria-label="next-slide" class="carousel-button right"><i class="far fa-chevron-right"></i></button>
+      </div>
     </main>
     <!-- <footer>
       <div>
@@ -68,5 +92,7 @@
       </div>
     </footer> -->
     <script src="js/hamburgerMenu.js"></script>
+    <script src="js/carousel.js"></script>
   </body>
 </html>
+

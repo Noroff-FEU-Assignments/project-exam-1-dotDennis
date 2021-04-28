@@ -1,0 +1,100 @@
+body {
+  height: 100vh;
+}
+
+main {
+  height: 100%;
+  margin-top: -195px;
+  padding-top: 195px;
+}
+
+.carousel {
+  position: relative;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.item__image {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.carousel__items-container /*carousel__track-container*/ {
+  height: 100%;
+  position: relative;
+  margin-top: 4rem;
+  overflow: hidden;
+}
+
+.carousel__items /*carousel__track*/ {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.25s linear;
+
+  /* overflow: hidden; */
+}
+
+.carousel__post  /*carousel__slide*/ {
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 40%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.carousel i {
+  font-size: 2rem;
+}
+
+.carousel-button.left {
+  left: -35px;
+}
+
+.carousel-button.right {
+  right: -35px;
+}
+
+.carousel__post h2 {
+  margin: 20px 0 0 0;
+  padding: 0;
+  line-height: 0;
+}
+
+@media screen and (min-height: 750px) {
+  .item__image {
+    height: 70%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .carousel__item-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 12.5rem auto;
+  }
+  .carousel__item {
+    position: unset;
+    height: 100%;
+    margin: 0 20px;
+  }
+  .carousel__item .item__image {
+    width: 100%;
+  }
+  .carousel__items-container {
+    margin-top: 6rem;
+  }
+}
