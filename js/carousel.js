@@ -1,4 +1,5 @@
 const carouselTrack = document.querySelector(".track");
+const loader = document.querySelector(".loader")
 
 // fetch data from api and create carousel html
 const url = "https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed";
@@ -8,6 +9,8 @@ async function getPosts() {
     // await response then await json
     const response = await fetch(url);
     const json = await response.json();
+
+    carouselTrack.innerHTML = ""
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
@@ -32,6 +35,7 @@ async function getPosts() {
                 <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
+            <a href="post.html?id=${json[i].id}" class="post-link"></a>
           </div>`;
       } else {
         if (i === json.length - 1) {
@@ -46,6 +50,7 @@ async function getPosts() {
                 <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
+            <a href="post.html?id=${json[i].id}" class="post-link"></a>
           </div>`;
         }
         if (i < 0 || i !== json.length - 1) {
@@ -60,6 +65,7 @@ async function getPosts() {
                 <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
+            <a href="post.html?id=${json[i].id}" class="post-link"></a>            
           </div>`;
         }
       }
@@ -70,32 +76,46 @@ async function getPosts() {
     console.log(error);
   } finally {
     // remove loader
-    // loader.classList.remove("loader");
-    console.log("done");
-    const postContainer = document.querySelectorAll(".post-container");
-    const postWidth = postContainer[0].offsetWidth;
+    loader.classList.remove("loader");
 
     const nextButton = document.querySelector("#next");
     const prevButton = document.querySelector("#prev");
 
-    let clickCount = 1;
-
-    nextButton.addEventListener("click", function () {
-      if (clickCount === postContainer.length) {
-        return;
-      } else {
-        carouselTrack.style.transform = `translateX(-${(postWidth) * clickCount}px)`; // 15px magic number = .post-container margin
-        clickCount++;
-      }
-
-      console.log(clickCount);
-      console.log(postContainer.length);
-    });
+    let direction = -1;
 
     prevButton.addEventListener("click", function () {
-      carouselTrack.style.transform = `translateX(-0px)`;
-      console.log("bop-back");
-      clickCount = 2;
+      if (direction === -1) {
+        direction = 1;
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+      }
+      direction = 1;
+      carouselTrack.style.justifyContent = `flex-end`;
+      carouselTrack.style.transform = `translateX(100%)`;
+    });
+
+    nextButton.addEventListener("click", function () {
+      if (direction === 1) {
+        direction = -1;
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+      }
+      // direction = -1;
+      carouselTrack.style.justifyContent = `flex-start`;
+      carouselTrack.style.transform = `translateX(-100%)`;
+    });
+
+    carouselTrack.addEventListener("transitionend", function () {
+      if (direction === -1) {
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+      } else if (direction === 1) {
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+      }
+
+      carouselTrack.style.transition = `none`;
+      carouselTrack.style.transform = `translateX(0)`;
+
+      setTimeout(function () {
+        carouselTrack.style.transition = `transform 0.3s ease-out`;
+      });
     });
   }
 }
