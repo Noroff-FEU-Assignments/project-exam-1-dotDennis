@@ -73,7 +73,7 @@ async function getPosts() {
     // loader.classList.remove("loader");
     console.log("done");
     const postContainer = document.querySelectorAll(".post-container");
-    const postWidth = postContainer[4].offsetWidth;
+    const postWidth = postContainer[0].offsetWidth;
 
     const nextButton = document.querySelector("#next");
     const prevButton = document.querySelector("#prev");
@@ -84,7 +84,7 @@ async function getPosts() {
       if (clickCount === postContainer.length) {
         return;
       } else {
-        carouselTrack.style.transform = `translateX(-${postWidth * clickCount}px)`;
+        carouselTrack.style.transform = `translateX(-${(postWidth) * clickCount}px)`; // 15px magic number = .post-container margin
         clickCount++;
       }
 
