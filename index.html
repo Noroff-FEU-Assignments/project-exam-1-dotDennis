@@ -62,28 +62,37 @@
       </div>
     </header>
     <main>
-      <div class="carousel">
-        <button aria-label="previous-slide" class="carousel-button left"><i class="far fa-chevron-left"></i></button>
-        <div class="carousel__items-container">
-          <div class="carousel__items">
-            <!-- <div class="carousel__post current-item">
-              <img class="item__image" src="img/erik-mclean-I6zLOuPXh6I-unsplash.jpg" alt="blog post title" />
-              <h2>title</h2>
-              <p>By <a href="/">Dennis Løvold</a> / 14.04.21</p>
-            </div>
-            <div class="carousel__post">
-              <img class="item__image" src="img/esther-tuttle-F_udAnJZl94-unsplash.jpg" alt="blog post title" />
-              <h2>title</h2>
-              <p>By <a href="/">Dennis Løvold</a> / 15.04.21</p>
-            </div>
-            <div class="carousel__post">
-              <img class="item__image" src="img/michael-dziedzic-0TPT2B2VsxU-unsplash.jpg" alt="blog post title" />
-              <h2>title</h2>
-              <p>By <a href="/">Dennis Løvold</a> / 16.04.21</p>
-            </div> -->
-          </div>
+      <!-- Put buttons in nav -->
+      <div class="carousel-container">
+        <div class="carousel-inner">
+          <div class="track"></div>
         </div>
-        <button aria-label="next-slide" class="carousel-button right"><i class="far fa-chevron-right"></i></button>
+        <!-- <div class="post-container">
+            <div class="card">
+              <img class="post-img" src="${featuredImage}" alt="${title}" />
+              <h2>Your life</h2>
+              <p>text</p>
+            </div>
+          </div>
+          <div class="post-container">
+            <div class="card">
+              <img class="post-img" src="${featuredImage}" alt="${title}" />
+              <h2>Your life</h2>
+              <p>text</p>
+            </div>
+          </div>
+          <div class="post-container">
+            <div class="card">
+              <img class="post-img" src="${featuredImage}" alt="${title}" />
+              <h2>Your life</h2>
+              <p>text</p>
+            </div>
+          </div> -->
+
+        <nav>
+          <button aria-label="previous-slide" id="prev" class="left"><i class="far fa-chevron-left"></i></button>
+          <button aria-label="next-slide" id="next" class="right"><i class="far fa-chevron-right"></i></button>
+        </nav>
       </div>
     </main>
     <!-- <footer>
@@ -95,4 +104,3 @@
     <script src="js/carousel.js"></script>
   </body>
 </html>
-

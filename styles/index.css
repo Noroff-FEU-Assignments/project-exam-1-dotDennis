@@ -4,76 +4,140 @@ body {
 
 main {
   height: 100%;
-  margin-top: -195px;
+  margin-top: -195px; /* to set actual point of main start = header end. */
   padding-top: 195px;
 }
 
-.carousel {
+.carousel-container {
+  width: 80%; /* width of the entire carousel */
+  height: 75%;
+  margin: 4rem auto 0 auto;
   position: relative;
-  height: 100%;
-  width: 80%;
-  margin: 0 auto;
 }
 
-.item__image {
+.carousel-container .carousel-inner {
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel-container .track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.33s ease-out;
+}
+
+.track .post-container /* .card-container */ {
+  width: 100%; /* give width that matches amount to display 33.74% on max */
+  flex-shrink: 0;
+  height: 100%;
+  /* padding-right: 15px; */
+}
+
+.post-container .post {
   width: 100%;
-  height: 60%;
+  height: 100%;
+  border: 1px solid #aaa; /* remove or change this */
+  /* border-radius: 7.5px 0;  remove this add on larger screens */
+  display: flex;
+  flex-direction: column;
+  position: relative; /* for image styling */
+}
+
+.post > * {
+  flex: 1;
+}
+
+.post-info {
+  flex-basis: 10px;
+  flex-grow: 0;
+  padding: 15px;
+  background: #ededec75;
+  z-index: 2;
+  /* border-radius: 0 0 7.5px 0; remove this add on larger screens */
+}
+
+.post-info h2{
+  font-size: 30px;
+  margin: 0;
+}
+
+.post-info p {
+  margin: 0;
+}
+
+.post .img-container {
+  /* border-radius: 15px; */
+  height: 100%;
+  /* position: relative; */
+}
+
+.img-container img {
+  /* border-radius: 7.5px 0 0 0; remove this add on larger screens */
+  position: absolute;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.carousel__items-container /*carousel__track-container*/ {
+.carousel-container nav button {
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button.left {
+  left: -60px;
+}
+
+button.right {
+  right: -60px;
+}
+
+/* .carousel-items {
+  display: flex;
+  width: 80%;
+  height: 500px;
+}
+
+.post {
+  width: 100%;
   height: 100%;
   position: relative;
-  margin-top: 4rem;
-  overflow: hidden;
 }
 
-.carousel__items /*carousel__track*/ {
-  height: 100%;
+.post-img {
+  object-fit: cover;
+}
+
+.carousel__post h2 {
   margin: 0;
-  padding: 0;
-  transition: transform 0.25s linear;
-
-  /* overflow: hidden; */
 }
 
-.carousel__post  /*carousel__slide*/ {
-  overflow: hidden;
-  position: absolute;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
+.carousel__post p {
+  margin: 0;
+} */
 
-.carousel-button {
+/* .button-left,
+.button-right {
   position: absolute;
-  top: 40%;
+  top: 50%;
   background: none;
   border: none;
   cursor: pointer;
   transform: translateY(-50%);
+  font-size: 3rem;
 }
 
-.carousel i {
-  font-size: 2rem;
+.button-left {
+  left: 0;
 }
 
-.carousel-button.left {
-  left: -35px;
-}
+.button-right {
+  right: 0;
+} */
 
-.carousel-button.right {
-  right: -35px;
-}
-
-.carousel__post h2 {
-  margin: 20px 0 0 0;
-  padding: 0;
-  line-height: 0;
-}
-
-@media screen and (min-height: 750px) {
+/* @media screen and (min-height: 750px) {
   .item__image {
     height: 70%;
   }
@@ -97,4 +161,4 @@ main {
   .carousel__items-container {
     margin-top: 6rem;
   }
-}
+} */
