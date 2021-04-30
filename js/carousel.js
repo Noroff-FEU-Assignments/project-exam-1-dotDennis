@@ -99,24 +99,24 @@ async function getPosts() {
     prevButton.addEventListener("click", function () {
       if (direction === -1) {
         direction = 1;
-        if (screen.width > 1500) {
+        if (screen.width >= 1500) {
           carouselTrack.appendChild(carouselTrack.firstElementChild);
           carouselTrack.appendChild(carouselTrack.firstElementChild);
           carouselTrack.appendChild(carouselTrack.firstElementChild);
-        } else if (screen.width < 1500 && screen.width > 1000) {
+        } else if (screen.width <= 1500 && screen.width >= 1000) {
           carouselTrack.appendChild(carouselTrack.firstElementChild);
           carouselTrack.appendChild(carouselTrack.firstElementChild);
-        } else if (screen.width < 1000) {
+        } else if (screen.width <= 1000) {
           carouselTrack.appendChild(carouselTrack.firstElementChild);
         }
       }
       direction = 1;
       carouselTrack.style.justifyContent = `flex-end`;
-      if (screen.width > 1500) {
+      if (screen.width >= 1500) {
         carouselTrack.style.transform = `translateX(33.74%)`;
-      } else if (screen.width > 1000 && screen.width < 1500) {
+      } else if (screen.width <= 1500 && screen.width >= 1000) {
         carouselTrack.style.transform = `translateX(50%)`;
-      } else if (screen.width < 1000) {
+      } else if (screen.width <= 1000) {
         carouselTrack.style.transform = `translateX(100%)`;
       }
     });
@@ -125,24 +125,24 @@ async function getPosts() {
       if (direction === 1) {
         direction = -1;
 
-        if (screen.width > 1500) {
+        if (screen.width >= 1500) {
           carouselTrack.prepend(carouselTrack.lastElementChild);
           carouselTrack.prepend(carouselTrack.lastElementChild);
           carouselTrack.prepend(carouselTrack.lastElementChild);
-        } else if (screen.width < 1500 && screen.width > 1000) {
+        } else if (screen.width <= 1500 && screen.width >= 1000) {
           carouselTrack.prepend(carouselTrack.lastElementChild);
           carouselTrack.prepend(carouselTrack.lastElementChild);
-        } else if (screen.width < 1000) {
+        } else if (screen.width <= 1000) {
           carouselTrack.prepend(carouselTrack.lastElementChild);
         }
       }
       // direction = -1;
       carouselTrack.style.justifyContent = `flex-start`;
-      if (screen.width > 1500) {
+      if (screen.width >= 1500) {
         carouselTrack.style.transform = `translateX(-33.74%)`;
-      } else if (screen.width > 1000 && screen.width < 1500) {
+      } else if (screen.width <= 1500 && screen.width >= 1000) {
         carouselTrack.style.transform = `translateX(-50%)`;
-      } else if (screen.width < 1000) {
+      } else if (screen.width <= 1000) {
         carouselTrack.style.transform = `translateX(-100%)`;
       }
     });
