@@ -1,5 +1,5 @@
 body {
-  height: 140vh;
+  height: 100vh;
 }
 
 main {
@@ -115,6 +115,16 @@ button.right {
 @media screen and (min-width: 1000px) {
   .carousel-container {
     margin-top: 6rem;
+  }
+  .track .post-container  {
+    width: 50%; 
+    padding: 0 15px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .track .post-container {
+    width: 33.74%; 
   }
 }
 

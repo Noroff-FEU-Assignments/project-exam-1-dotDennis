@@ -1,5 +1,5 @@
 const carouselTrack = document.querySelector(".track");
-const loader = document.querySelector(".loader")
+const loader = document.querySelector(".loader");
 
 // fetch data from api and create carousel html
 const url = "https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed";
@@ -10,7 +10,7 @@ async function getPosts() {
     const response = await fetch(url);
     const json = await response.json();
 
-    carouselTrack.innerHTML = ""
+    carouselTrack.innerHTML = "";
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
@@ -83,24 +83,68 @@ async function getPosts() {
 
     let direction = -1;
 
+    let translate = 0;
+
+    window.addEventListener("resize", checkWidth);
+    function checkWidth() {
+      if (window.matchMedia("(min-width: 1000px)").matches) {
+        console.log(screen.width);
+        translate = 50;
+        console.log(translate);
+      } else {
+        translate = 100;
+      }
+    }
+
     prevButton.addEventListener("click", function () {
       if (direction === -1) {
         direction = 1;
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        if (screen.width > 1500) {
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+        } else if (screen.width < 1500 && screen.width > 1000) {
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+        } else if (screen.width < 1000) {
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+        }
       }
       direction = 1;
       carouselTrack.style.justifyContent = `flex-end`;
-      carouselTrack.style.transform = `translateX(100%)`;
+      if (screen.width > 1500) {
+        carouselTrack.style.transform = `translateX(33.74%)`;
+      } else if (screen.width > 1000 && screen.width < 1500) {
+        carouselTrack.style.transform = `translateX(50%)`;
+      } else if (screen.width < 1000) {
+        carouselTrack.style.transform = `translateX(100%)`;
+      }
     });
 
     nextButton.addEventListener("click", function () {
       if (direction === 1) {
         direction = -1;
-        carouselTrack.prepend(carouselTrack.lastElementChild);
+
+        if (screen.width > 1500) {
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+        } else if (screen.width < 1500 && screen.width > 1000) {
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+        } else if (screen.width < 1000) {
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+        }
       }
       // direction = -1;
       carouselTrack.style.justifyContent = `flex-start`;
-      carouselTrack.style.transform = `translateX(-100%)`;
+      if (screen.width > 1500) {
+        carouselTrack.style.transform = `translateX(-33.74%)`;
+      } else if (screen.width > 1000 && screen.width < 1500) {
+        carouselTrack.style.transform = `translateX(-50%)`;
+      } else if (screen.width < 1000) {
+        carouselTrack.style.transform = `translateX(-100%)`;
+      }
     });
 
     carouselTrack.addEventListener("transitionend", function () {
