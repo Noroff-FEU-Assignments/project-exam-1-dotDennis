@@ -49,7 +49,7 @@ function addClass(event) {
 window.addEventListener("resize", checkWidth);
 
 function checkWidth() {
-  if (window.matchMedia("(min-width: 850px)").matches) {
+  if (window.matchMedia("(min-width: 1000px)").matches) {
     socialsContainer.classList.remove("slide-out", "slide-in");
     navContainer.classList.remove("slide-out", "slide-in");
     socialsContainer.className = "social-icons wait";
@@ -58,5 +58,73 @@ function checkWidth() {
     socialsButton.innerHTML = `<i class="fas fa-ellipsis-h"></i>`;
   } else {
     return;
+  }
+}
+
+window.addEventListener("scroll", checkScroll);
+
+// select containers
+const logoContainer = document.querySelector(".logo-link");
+const navWrapper = document.querySelector(".menu-wrapper");
+const mainNavLinks = document.querySelectorAll(".main-navigation .nav-link");
+const mainContainer = document.querySelector("main");
+
+// fixed position on scroll + remove logo
+
+function checkScroll() {
+  if (screen.width > 1000) {
+    logoContainer.children[0].style.fontSize = "4.875rem";
+
+    if (window.scrollY > 100) {
+      logoContainer.style.display = "none";
+      navWrapper.style.position = "fixed";
+      navWrapper.style.top = "0";
+      navContainer.style.position = "absolute";
+      navContainer.style.paddingBottom = "0";
+      mainContainer.style.marginTop = "50px";
+      mainNavLinks.forEach((element) => {
+        element.style.padding = "0 10px";
+        element.style.fontSize = "35px";
+        element.style.color = "var(--accent)";
+      });
+    } else {
+      if (window.scrollY === 0) {
+        logoContainer.style.display = "block";
+        navWrapper.style.position = "relative";
+        navContainer.style.position = "relative";
+        navContainer.style.paddingBottom = "1rem";
+        mainContainer.style.marginTop = "-195px";
+        mainNavLinks.forEach((element) => {
+          element.style.padding = "0 5rem";
+          element.style.fontSize = "35px";
+          element.style.color = "var(--off-white)";
+        });
+      }
+    }
+  } else {
+    if (screen.width < 1000) {
+      logoContainer.style.display = "block";
+      navWrapper.style.position = "relative";
+      navContainer.style.position = "relative";
+      navContainer.style.paddingBottom = "1rem";
+      mainNavLinks.forEach((element) => {
+        element.style.padding = "0 5rem";
+        element.style.fontSize = "35px";
+        element.style.color = "var(--off-white)";
+      });
+      if (window.scrollY > 100) {
+        navWrapper.style.position = "fixed";
+        navWrapper.style.top = "0";
+        navWrapper.style.width = "100%";
+        logoContainer.children[0].style.fontSize = "3rem";
+        mainContainer.style.marginTop = "50px";
+      } else {
+        if (window.scrollY === 0) {
+          navWrapper.style.position = "relative";
+          logoContainer.children[0].style.fontSize = "4.875rem";
+          mainContainer.style.marginTop = "-195px";
+        }
+      }
+    }
   }
 }

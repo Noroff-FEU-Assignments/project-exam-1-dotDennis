@@ -58,19 +58,16 @@ li {
 
 /* Logo */
 h1 {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: "Game Played", sans-serif;
   line-height: 1.2;
-  margin-top: 0; /* removes random padding */
+  margin: 0;
   text-align: center;
   color: var(--accent);
   text-shadow: var(--accent-75op) -5px 0px 1px;
   font-weight: 400;
-  font-size: 76px;
+  font-size: 4.875rem;
   -webkit-text-stroke: var(--primary) 1px;
+  padding: 1rem 0;
 }
 
 /* Page specific titles */
@@ -123,6 +120,10 @@ a {
   display: none;
 }
 
+.search {
+  cursor: pointer;
+}
+
 .hamburger-menu {
   position: fixed;
   width: 100%;
@@ -136,7 +137,10 @@ a {
 
 .menu-wrapper {
   background: var(--primary);
-  height: 195px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
 }
 
 /* mobile menu */
@@ -171,6 +175,12 @@ a {
 .hamburger-menu .search:focus,
 .hamburger-menu .socials:focus {
   -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-menu .main-nav-mobile:hover,
+.hamburger-menu .search:hover,
+.hamburger-menu .socials:hover {
+  color: var(--accent);
 }
 
 .main-nav-mobile {
@@ -262,35 +272,19 @@ a {
 .main-navigation ul li {
   padding: 25px 0;
 }
-@media screen and (min-width: 700px) {
-  h1 {
-    width: 100%;
-    margin-top: 10px;
-  }
-  .menu-wrapper {
-    height: 120px;
-  }
+
+.nav-link:hover {
+  color: var(--accent);
 }
 
 @media screen and (min-width: 1000px) {
   .hamburger-menu {
     display: none;
   }
-  .logo-link {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
   h1 {
-    font-size: 96px;
-    position: relative;
-    width: 60vw;
-    margin-top: unset;
-    line-height: 1;
-    margin-top: 20px;
+    line-height: 1.2;
+    white-space: nowrap;
   }
-
   .main-navigation,
   .main-navigation ul,
   .main-navigation ul li,
@@ -311,20 +305,18 @@ a {
   .search-bar button {
     color: var(--primary);
   }
-  .main-navigation .nav-link {
-    color: var(--primary);
-  }
 
   .social-icons .nav-link i {
     font-size: 40px;
   }
 
   .social-icons {
-    padding-right: 5%;
+    padding-right: 2.8%;
     padding-top: 8px;
+    white-space: nowrap;
   }
   .search-bar {
-    padding-left: 5%;
+    padding-left: 2.8%;
   }
   /* Magic numbers to make social icons & search bar perfect widths */
   .search-bar form {
@@ -336,39 +328,23 @@ a {
   /* ends here */
 
   .menu-wrapper {
-    padding-top: 74px; /* to align with logo */
-    padding-bottom: 74px;
-    height: unset;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
   .main-navigation {
-    position: absolute;
     display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
     justify-content: center;
-    top: 242px;
-    margin-top: 30px;
     width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    white-space: nowrap;
+    padding-bottom: 1rem;
   }
   .main-navigation li a {
-    margin: 0 50px;
-  }
-}
-@media screen and (min-width: 1270px) {
-  .menu-wrapper {
-    padding-bottom: 20px;
-    padding-top: 12px;
-  }
-  .main-navigation {
-    top: 122px;
-  }
-  h1 {
-    line-height: 1.2;
-    margin-top: 0;
+    padding: 0 5rem;
   }
 }
 

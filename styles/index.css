@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: 140vh;
 }
 
 main {
@@ -37,7 +37,7 @@ main {
   width: 100%; /* give width that matches amount to display 33.74% on max */
   flex-shrink: 0;
   height: 100%;
-  padding: 0 5px; /* add on larger screen sizes (when 2x2 images and 3x3) */
+  /* padding: 0; add on larger screen sizes (when 2x2 images and 3x3) */
   position: relative; /* for anchor tag to cover entire carousel slide */
 }
 
@@ -105,38 +105,18 @@ main {
 }
 
 button.left {
-  left: 30px;
+  left: 3%;
 }
 
 button.right {
-  right: 30px;
-}
-
-/* @media screen and (min-height: 750px) {
-  .item__image {
-    height: 70%;
-  }
+  right: 3%;
 }
 
 @media screen and (min-width: 1000px) {
-  .carousel__item-container {
-    position: relative;
-    display: flex;
-    width: 100%;
-    margin: 12.5rem auto;
-  }
-  .carousel__item {
-    position: unset;
-    height: 100%;
-    margin: 0 20px;
-  }
-  .carousel__item .item__image {
-    width: 100%;
-  }
-  .carousel__items-container {
+  .carousel-container {
     margin-top: 6rem;
   }
-} */
+}
 
 /* temp loader */
 .loader,
