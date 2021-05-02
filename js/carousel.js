@@ -21,7 +21,7 @@ async function getPosts() {
       // format the date
       const date = new Date(json[i].date);
       const format = { day: "numeric", month: "numeric", year: "numeric" };
-      const dateFormatted = date.toLocaleString("en-GB", format).replace(/\//g, ".");
+      const dateFormatted = date.toLocaleString("en-GB", format);
 
       if (i === 0) {
         carouselTrack.innerHTML += `
@@ -35,7 +35,7 @@ async function getPosts() {
                 <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
-            <a href="post.html?id=${json[i].id}" class="post-link"></a>
+            <a href="post.html?post=${json[i].id}" class="post-link"></a>
           </div>`;
       } else {
         if (i === json.length - 1) {
@@ -50,7 +50,7 @@ async function getPosts() {
                 <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
-            <a href="post.html?id=${json[i].id}" class="post-link"></a>
+            <a href="post.html?post=${json[i].id}" class="post-link"></a>
           </div>`;
         }
         if (i < 0 || i !== json.length - 1) {
@@ -62,10 +62,10 @@ async function getPosts() {
               </div>              
               <div class="post-info">
                 <h2>${title}</h2>
-                <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
+                <p>By <a href="serach.html?search=${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
-            <a href="post.html?id=${json[i].id}" class="post-link"></a>            
+            <a href="post.html?post=${json[i].id}" class="post-link"></a>            
           </div>`;
         }
       }
@@ -83,32 +83,42 @@ async function getPosts() {
 
     let direction = -1;
 
-    let translate = 0;
-
     window.addEventListener("resize", checkWidth);
-    function checkWidth() {
-      if (window.matchMedia("(min-width: 1000px)").matches) {
-        console.log(window.outerWidth);
-        translate = 50;
-        console.log(translate);
+
+    function appendChild() {
+      if (window.outerWidth >= 1500) {
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+      } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
+      } else if (window.outerWidth <= 1000) {
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
       } else {
-        translate = 100;
+        return;
+      }
+    }
+
+    function prependChild() {
+      if (window.outerWidth >= 1500) {
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+      } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+      } else if (window.outerWidth <= 1000) {
+        carouselTrack.prepend(carouselTrack.lastElementChild);
+      } else {
+        return;
       }
     }
 
     prevButton.addEventListener("click", function () {
       if (direction === -1) {
         direction = 1;
-        if (window.outerWidth >= 1500) {
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-        } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-        } else if (window.outerWidth <= 1000) {
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-        }
+        appendChild();
       }
       direction = 1;
       carouselTrack.style.justifyContent = `flex-end`;
@@ -124,17 +134,7 @@ async function getPosts() {
     nextButton.addEventListener("click", function () {
       if (direction === 1) {
         direction = -1;
-
-        if (window.outerWidth >= 1500) {
-          carouselTrack.prepend(carouselTrack.lastElementChild);
-          carouselTrack.prepend(carouselTrack.lastElementChild);
-          carouselTrack.prepend(carouselTrack.lastElementChild);
-        } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
-          carouselTrack.prepend(carouselTrack.lastElementChild);
-          carouselTrack.prepend(carouselTrack.lastElementChild);
-        } else if (window.outerWidth <= 1000) {
-          carouselTrack.prepend(carouselTrack.lastElementChild);
-        }
+        prependChild();
       }
       // direction = -1;
       carouselTrack.style.justifyContent = `flex-start`;
