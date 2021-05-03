@@ -23,7 +23,6 @@ async function fetchPost() {
   try {
     const json = await (await fetch(api)).json();
     postContainer.innerHTML = buildHtml(json);
-
   } catch (error) {
     console.log(error);
   } finally {
@@ -55,7 +54,7 @@ function buildHtml(post) {
     altTxt = post._embedded["wp:featuredmedia"][0].alt_text;
   }
 
-  // declare lorem ipsum, if no text is avaliable (through the wp plugin)
+  // declare default values from acf plugin, if it returns false, display default.
   let p1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et volutpat purus. Pellentesque habitant morbi 
             tristique senectus et netus et malesuada fames ac turpis egestas. Cras condimentum erat erat, eget cursus nibh 
             pellentesque ac. Integer varius, velit vitae ornare vehicula, sapien libero ornare justo, in maximus diam elit nec est. 
@@ -96,22 +95,47 @@ function buildHtml(post) {
     image_p2 = post.acf.image_p2;
   }
 
+  let subtitle_p2 = "Chapter 1";
+  if (post.acf.image_p2) {
+    subtitle_p2 = post.acf.subtitle_p2;
+  }
+
+  let subtitle_p3 = "Chapter 2";
+  if (post.acf.image_p3) {
+    subtitle_p3 = post.acf.subtitle_p3;
+  }
+
+  let featuredImage = "img/placeholder-image.png";
+  if (post._embedded["wp:featuredmedia"][0].source_url) {
+    featuredImage = post._embedded["wp:featuredmedia"][0].source_url;
+  }
+
+  let title = "Title missing";
+  if (post.title.rendered) {
+    title = post.title.rendered;
+  }
+
+  let author = "Unknown";
+  if (post._embedded.author[0].name) {
+    author = post._embedded.author[0].name;
+  }
+
   return `
-  <nav><a href="blog.html">Blog</a> / <a href="${document.location.search}">${post.title.rendered}</a></nav>
+  <nav><a href="blog.html">Blog</a> / <a href="${document.location.search}">${title}</a></nav>
         <header>
-          <img src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="${altTxt}" />
-          <h2>${post.title.rendered}</h2>
-          <p class="link-txt">By <a href="">${post._embedded.author[0].name}</a> - ${dateFormatted}</p>
+          <img src="${featuredImage}" alt="${altTxt}" />
+          <h2>${title}</h2>
+          <p class="link-txt">By <a href="">${author}</a> - ${dateFormatted}</p>
         </header>
         <p class="blog-txt">${p1}</p>
         <div class="centre">
           <img src="${image_p2}" alt="" />
           <div>
-            <h3>${post.acf.subtitle_p2}</h3>
+            <h3>${subtitle_p2}</h3>
             <p class="blog-txt">${p2}</p>
            </div>
         </div>
-        <h3>${post.acf.subtitle_p3}</h3>
+        <h3>${subtitle_p3}</h3>
         <p class="blog-txt">${p3}</p>
         <div class="comment-sections"><a href="">leave a comment</a> socials icons</div>
       </article>`;

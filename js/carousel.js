@@ -14,14 +14,20 @@ async function getPosts() {
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
-      const title = json[i].title.rendered;
-      const featuredImage = json[i]._embedded["wp:featuredmedia"][0].source_url;
-      const author = json[i]._embedded.author[0].name;
-
+      let title = "Title missing";
+      if (json[i].title.rendered) {
+        title = json[i].title.rendered;
+      }
+      let featuredImage = "img/placeholder-image.png";
+      if (json[i]._embedded["wp:featuredmedia"][0].source_url) {
+        featuredImage = json[i]._embedded["wp:featuredmedia"][0].source_url;
+      }
       // format the date
       const date = new Date(json[i].date);
       const format = { day: "numeric", month: "numeric", year: "numeric" };
       const dateFormatted = date.toLocaleString("en-GB", format);
+
+      // add default
 
       if (i === 0) {
         carouselTrack.innerHTML += `
