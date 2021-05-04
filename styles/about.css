@@ -1,0 +1,30 @@
+article {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+article nav .icons-container {
+  margin: 4rem 0 0 0;
+  display: flex;
+  padding: 0;
+}
+
+.icons-container li {
+  margin: 0 2rem 0 0;
+}
+
+.social-icon {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.social-icon:hover {
+  color: var(--accent);
+}
+
+@media screen and (min-width: 1000px) {
+  article {
+    max-width: 70%;
+    margin: 6rem auto;
+  }
+}

@@ -1,0 +1,15 @@
+main section form {
+  display: flex;
+  flex-direction: column;
+}
+
+form .fullName {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.fullName input {
+  width: 50%;
+}

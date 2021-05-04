@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dennis Løvold</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" sizes="32x32" type="image/x-icon" href="img/favicon-32x32.png" />
+    <link rel="shortcut icon" sizes="16x16" type="image/x-icon" href="img/favicon-16x16.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f0bf46977e.js" crossorigin="anonymous"></script>
+    <!-- Style components -->
+    <link rel="stylesheet" href="styles/global.css" />
+    <!-- Page specific styles -->
+    <link rel="stylesheet" href="styles/contact.css" />
+  </head>
+  <body>
+    <header>
+      <div class="hamburger-menu">
+        <button class="main-nav-mobile"><i class="far fa-bars"></i></button>
+        <button class="socials"><i class="fas fa-ellipsis-h"></i></button>
+        <button class="search" type="submit"><i class="far fa-search"></i></button>
+      </div>
+      <div class="menu-wrapper">
+        <div class="search-bar fixed">
+          <form action="">
+            <input class="search-field" type="text" />
+            <button class="search-field search" type="submit"><i class="far fa-search"></i></button>
+          </form>
+        </div>
+        <a class="logo-link" href="/"><h1>Dennis Løvold</h1></a>
+
+        <nav class="social-icons wait fixed">
+          <ul>
+            <li>
+              <a target="_blank" href="http://linkedin.com/in/dotdennis" class="nav-link"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a target="_blank" href="http://instagram.com/dennisloevold" class="nav-link"><i class="fab fa-facebook-square"></i></a>
+            </li>
+            <li>
+              <a target="_blank" href="http://github.com/dotDennis" class="nav-link"><i class="fab fa-github"></i></a>
+            </li>
+            <li>
+              <a target="_blank" href="https://twitter.com/d0tDennis" class="nav-link"><i class="fab fa-twitter"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="main-navigation wait fixed">
+          <ul>
+            <li><a class="nav-link" href="/">home</a></li>
+            <li><a class="nav-link" href="blog.html">blog</a></li>
+            <li><a class="nav-link" href="about.html">about</a></li>
+            <li><a class="nav-link" href="contact.html">contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section>
+        <form>
+          <div class="fullName">
+            <label for="firstName">Name*</label>
+            <input placeholder="John" type="text" name="firstName" />
+            <label for="lastName">Last Name</label>
+            <input placeholder="Doe" type="text" name="lastName" />
+          </div>
+          <label for="email">Email*</label>
+          <input placeholder="example@mail.com" type="text" name="email" />
+          <label for="subject">Subject*</label>
+          <input placeholder="Minimum 15 characters." type="text" name="subject" />
+          <label for="message">Message*</label>
+          <textarea name="message" placeholder="write your message"></textarea>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <p>&copy; Dennis Løvold</p>
+      </div>
+    </footer>
+    <script src="js/hamburgerMenu.js"></script>
+  </body>
+</html>
