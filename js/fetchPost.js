@@ -115,10 +115,7 @@ function buildHtml(post) {
     title = post.title.rendered;
   }
 
-  let author = "Unknown";
-  if (post._embedded.author[0].name) {
-    author = post._embedded.author[0].name;
-  }
+  let author = post._embedded.author[0].name;
 
   return `
   <nav><a href="blog.html">Blog</a> / <a href="${document.location.search}">${title}</a></nav>

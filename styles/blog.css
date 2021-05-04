@@ -1,0 +1,68 @@
+.content {
+  width: 80%; /* 80% on smaller screens */
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.content section {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.content .post-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 3rem;
+}
+
+.post-container .post-image {
+  display: flex;
+  position: relative;
+}
+
+.post-image img {
+  object-fit: cover;
+  height: 175px;
+  width: 100%;
+}
+
+.post-image a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.post-container .post-info h2,
+p,
+a {
+  margin: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .content {
+    width: 70%;
+  }
+  .content .post-container {
+    width: 45%;
+    min-height: 300px;
+  }
+  .post-image img {
+    height: 300px;
+  }
+  .post-info p,
+  .post-info a {
+    white-space: pre-line;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .content .post-container {
+    margin: 6rem auto 0 auto;
+  }
+}

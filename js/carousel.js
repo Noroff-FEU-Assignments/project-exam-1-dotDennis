@@ -14,6 +14,8 @@ async function getPosts() {
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
+      const author = json[i]._embedded.author[0].name;
+
       let title = "Title missing";
       if (json[i].title.rendered) {
         title = json[i].title.rendered;
@@ -28,39 +30,7 @@ async function getPosts() {
       const dateFormatted = date.toLocaleString("en-GB", format);
 
       // add default
-
-      if (i === 0) {
-        carouselTrack.innerHTML += `
-          <div class="post-container">
-            <div id="first" class="post current-item">
-              <div class="img-container">
-                <img src="${featuredImage}" alt="${title}"/>
-              </div>
-              <div class="post-info">
-                <h2>${title}</h2>
-                <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
-              </div>
-            </div>
-            <a href="post.html?post=${json[i].id}" class="post-link"></a>
-          </div>`;
-      } else {
-        if (i === json.length - 1) {
-          carouselTrack.innerHTML += `
-          <div class="post-container">
-            <div id="last" class="post">
-              <div class="img-container">
-                <img src="${featuredImage}" alt="${title}"/>
-              </div>
-              <div class="post-info">
-                <h2>${title}</h2>
-                <p>By <a href="${author}">${author}</a> / ${dateFormatted}</p>
-              </div>
-            </div>
-            <a href="post.html?post=${json[i].id}" class="post-link"></a>
-          </div>`;
-        }
-        if (i < 0 || i !== json.length - 1) {
-          carouselTrack.innerHTML += `
+      carouselTrack.innerHTML += `
           <div class="post-container">
             <div class="post">
               <div class="img-container">
@@ -73,8 +43,6 @@ async function getPosts() {
             </div>
             <a href="post.html?post=${json[i].id}" class="post-link"></a>            
           </div>`;
-        }
-      }
     }
   } catch (error) {
     // if there's an error - display error to user
@@ -82,7 +50,7 @@ async function getPosts() {
     console.log(error);
   } finally {
     // remove loader
-    loader.classList.remove("loader");
+    loader.outerHTML = ``;
 
     const nextButton = document.querySelector("#next");
     const prevButton = document.querySelector("#prev");

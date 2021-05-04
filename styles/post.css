@@ -12,7 +12,7 @@ main {
 }
 
 .post-container img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .post-container header img {
@@ -21,8 +21,8 @@ main {
   object-fit: cover;
 }
 
-.post-container nav{
-    margin-bottom: 1.8rem;
+.post-container nav {
+  margin-bottom: 1.8rem;
 }
 
 div.centre {
@@ -42,8 +42,6 @@ div.centre img {
 @media screen and (min-width: 1000px) {
   .post-container {
     margin-top: 6rem;
-  }
-  .post-container {
     width: 70%;
   }
   div.centre {
