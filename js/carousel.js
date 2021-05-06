@@ -29,7 +29,7 @@ async function getPosts() {
       const format = { day: "numeric", month: "numeric", year: "numeric" };
       const dateFormatted = date.toLocaleString("en-GB", format);
 
-      // add default
+      // build html
       carouselTrack.innerHTML += `
           <div class="post-container">
             <div class="post">
