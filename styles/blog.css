@@ -66,6 +66,8 @@ button.view-more:hover {
   transition: color 0.2s ease-in-out;
 }
 
+
+
 @media screen and (min-width: 800px) {
   .content {
     width: 80%;

@@ -39,6 +39,31 @@ div.centre img {
   margin: 1rem 0 -1rem 0;
 }
 
+article nav .icons-container {
+  margin: 1rem 0 0 0;
+}
+
+.icons-container li {
+  margin: 0 10px 0 0; /* 10 is a magic number that fits the design. */
+}
+
+.icons-container i {
+  font-size: 2rem;
+}
+
+.post-container header img {
+  transform-origin: left;
+  animation: imageExpand 0.5s ease-in-out;
+}
+@keyframes imageExpand {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 @media screen and (min-width: 1000px) {
   .post-container {
     margin-top: 6rem;
@@ -63,5 +88,8 @@ div.centre img {
   }
   .post-container p {
     margin-top: 0;
+  }
+  .post-container header img {
+    transform-origin: center;
   }
 }

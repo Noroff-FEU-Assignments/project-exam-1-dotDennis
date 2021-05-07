@@ -136,7 +136,25 @@ function buildHtml(post) {
         </div>
         <h3>${subtitle_p3}</h3>
         <p class="blog-txt">${p3}</p>
-        <div class="comment-sections"><a href="">leave a comment</a> socials icons</div>
+        <div class="comment-section">
+          <a href="">leave a comment</a>
+        </div>
+        <nav>
+            <ul class="icons-container">
+              <li>
+                <a target="_blank" href="http://linkedin.com/in/dotdennis" class="social-icon"><i class="fab fa-linkedin"></i></a>
+              </li>
+              <li>
+                <a target="_blank" href="http://instagram.com/dennisloevold" class="social-icon"><i class="fab fa-facebook-square"></i></a>
+              </li>
+              <li>
+                <a target="_blank" href="http://github.com/dotDennis" class="social-icon"><i class="fab fa-github"></i></a>
+              </li>
+              <li>
+                <a target="_blank" href="https://twitter.com/d0tDennis" class="social-icon"><i class="fab fa-twitter"></i></a>
+              </li>
+            </ul>
+          </nav>
       </article>`;
 }
 
