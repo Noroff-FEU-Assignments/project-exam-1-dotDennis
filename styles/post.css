@@ -55,7 +55,7 @@ article nav .icons-container {
   transform-origin: left;
   animation: imageSlide 0.5s ease-in-out;
 }
-@keyframes imageSlide {
+@keyframes image-slide {
   0% {
     transform: translateX(-100%);
   }
@@ -91,14 +91,14 @@ article nav .icons-container {
   }
   .post-container header img {
     transform-origin: center;
-    animation: imageExpand 0.5s ease-in-out;
+    animation: image-expand 0.6s ease-in-out;
   }
-  @keyframes imageExpand {
+  @keyframes image-expand {
     0% {
-      transform: scaleX(0);
+      transform: scale(0);
     }
     100% {
-      transform: scaleX(1);
+      transform: scale(1);
     }
   }
 }

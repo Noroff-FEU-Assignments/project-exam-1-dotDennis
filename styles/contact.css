@@ -1,15 +1,63 @@
-main section form {
+main section .contact-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-form .fullName {
+.contact-form input {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  flex: 1;
+  height: 40px;
+  border: none;
+  background: var(--primary-op25);
+  margin: 2px 0 1.5rem 0;
 }
 
-.fullName input {
-  width: 50%;
+.contact-form textarea {
+  border: none;
+  background: var(--primary-op25);
+  height: 150px;
+}
+
+.fullName {
+  display: flex;
+  width: 100%;
+}
+
+.fullName div {
+  width: 100%;
+}
+
+.fullName div:first-child {
+  padding-right: 0.5rem;
+}
+
+.fullName div:last-child {
+  padding-left: 0.5rem;
+}
+
+.contact-form div.fullName input {
+  width: 100%;
+}
+
+.contact-btn {
+  max-width: 300px;
+  margin: 2.5rem 0;
+  cursor: pointer;
+  align-items: center;
+  padding: 1rem;
+  justify-content: center;
+  font-size: 26px;
+  background: var(--primary);
+  color: var(--off-white);
+  text-transform: capitalize;
+  border: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.contact-btn:hover {
+  color: var(--accent);
+  transition: color 0.2s ease-in-out;
 }

@@ -415,8 +415,9 @@ footer {
 }
 
 /*  Other */
-article {
-  max-width: 80%;
+article,
+section {
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -425,7 +426,6 @@ article nav .icons-container {
   display: flex;
   padding: 0;
 }
-
 
 .icons-container li {
   margin: 0 2rem 0 0;
@@ -439,7 +439,6 @@ article nav .icons-container {
 .social-icon:hover {
   color: var(--accent);
 }
-
 
 div.error {
   display: flex;
@@ -458,6 +457,11 @@ div.error p.error-txt {
 @media screen and (min-width: 1000px) {
   div.error {
     margin-top: 6rem;
+  }
+  article,
+  section {
+    width: 70%;
+    margin: 6rem auto;
   }
 }
 

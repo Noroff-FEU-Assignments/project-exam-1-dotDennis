@@ -23,7 +23,7 @@ async function fetchPost() {
   try {
     const json = await (await fetch(api)).json();
     postContainer.innerHTML = buildHtml(json);
-    document.title = `${document.title} | ${json.title.rendered}`;
+    document.title = `${document.title} ${json.title.rendered}`;
   } catch (error) {
     console.log(error);
   } finally {

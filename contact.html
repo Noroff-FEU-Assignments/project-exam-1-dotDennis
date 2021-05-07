@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dennis Løvold</title>
+    <title>Dennis Løvold | Contact</title>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="shortcut icon" sizes="32x32" type="image/x-icon" href="img/favicon-32x32.png" />
@@ -63,12 +63,16 @@
     </header>
     <main>
       <section>
-        <form>
+        <form class="contact-form">
           <div class="fullName">
-            <label for="firstName">Name*</label>
-            <input placeholder="John" type="text" name="firstName" />
-            <label for="lastName">Last Name</label>
-            <input placeholder="Doe" type="text" name="lastName" />
+            <div class="firstName">
+              <label for="firstName">Name*</label>
+              <input placeholder="John" type="text" name="firstName" />
+            </div>
+            <div class="lastName">
+              <label for="lastName">Last Name</label>
+              <input placeholder="Doe" type="text" name="lastName" />
+            </div>
           </div>
           <label for="email">Email*</label>
           <input placeholder="example@mail.com" type="text" name="email" />
@@ -76,6 +80,7 @@
           <input placeholder="Minimum 15 characters." type="text" name="subject" />
           <label for="message">Message*</label>
           <textarea name="message" placeholder="write your message"></textarea>
+          <button class="contact-btn" type="submit">Send</button>
         </form>
       </section>
     </main>

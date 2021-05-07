@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 }
 
-.content section {
+div.content section {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
