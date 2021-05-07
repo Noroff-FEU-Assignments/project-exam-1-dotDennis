@@ -44,9 +44,31 @@ a {
   margin: 0;
 }
 
+button.view-more {
+  width: 60%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 26px;
+  background: var(--primary);
+  color: var(--off-white);
+  text-transform: capitalize;
+  border: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+button.view-more:hover {
+  color: var(--accent);
+  transition: color 0.2s ease-in-out;
+}
+
 @media screen and (min-width: 800px) {
   .content {
-    width: 70%;
+    width: 80%;
   }
   .content .post-container {
     width: 45%;
@@ -64,5 +86,12 @@ a {
 @media screen and (min-width: 1000px) {
   .content .post-container {
     margin: 6rem auto 0 auto;
+  }
+  .content {
+    width: 70%;
+  }
+  button.view-more {
+    margin-top: 5rem;
+    width: 40%;
   }
 }

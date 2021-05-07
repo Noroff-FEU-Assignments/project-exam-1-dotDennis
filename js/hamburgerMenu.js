@@ -76,7 +76,6 @@ window.addEventListener("scroll", checkScroll);
 const logoContainer = document.querySelector(".logo-link");
 const navWrapper = document.querySelector(".menu-wrapper");
 const mainNavLinks = document.querySelectorAll(".main-navigation .nav-link");
-const mainContainer = document.querySelector("main");
 
 // remove logo on scroll + move some object around
 function checkScroll() {

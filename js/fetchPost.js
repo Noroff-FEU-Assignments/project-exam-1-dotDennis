@@ -23,6 +23,7 @@ async function fetchPost() {
   try {
     const json = await (await fetch(api)).json();
     postContainer.innerHTML = buildHtml(json);
+    document.title = `${document.title} | ${json.title.rendered}`;
   } catch (error) {
     console.log(error);
   } finally {
@@ -47,12 +48,6 @@ function buildHtml(post) {
   const date = new Date(post.date);
   const format = { day: "numeric", month: "numeric", year: "numeric" };
   const dateFormatted = date.toLocaleString("en-GB", format);
-
-  let altTxt = `Image related to ${post.title.rendered}`;
-
-  if (post._embedded["wp:featuredmedia"][0].alt_text) {
-    altTxt = post._embedded["wp:featuredmedia"][0].alt_text;
-  }
 
   // declare default values from acf plugin, if it returns false, display default.
   let p1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et volutpat purus. Pellentesque habitant morbi 
@@ -106,13 +101,20 @@ function buildHtml(post) {
   }
 
   let featuredImage = "img/placeholder-image.png";
-  if (post._embedded["wp:featuredmedia"][0].source_url) {
+  if (post.featured_media !== 0) {
     featuredImage = post._embedded["wp:featuredmedia"][0].source_url;
   }
 
   let title = "Title missing";
   if (post.title.rendered) {
     title = post.title.rendered;
+  }
+
+  let altTxt = `Image related to ${title}`;
+  if (post.featured_media !== 0) {
+    if (post._embedded["wp:featuredmedia"][0].alt_text) {
+      altTxt = post._embedded["wp:featuredmedia"][0].alt_text;
+    }
   }
 
   let author = post._embedded.author[0].name;

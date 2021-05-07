@@ -21,8 +21,15 @@ async function getPosts() {
         title = json[i].title.rendered;
       }
       let featuredImage = "img/placeholder-image.png";
-      if (json[i]._embedded["wp:featuredmedia"][0].source_url) {
+      if (json[i].featured_media !== 0) {
         featuredImage = json[i]._embedded["wp:featuredmedia"][0].source_url;
+      }
+
+      let altTxt = `Image related to ${title}`;
+      if (json[i].featured_media !== 0) {
+        if (json[i]._embedded["wp:featuredmedia"][0].alt_text) {
+          altTxt = json[i]._embedded["wp:featuredmedia"][0].alt_text;
+        }
       }
       // format the date
       const date = new Date(json[i].date);
@@ -34,7 +41,7 @@ async function getPosts() {
           <div class="post-container">
             <div class="post">
               <div class="img-container">
-                <img src="${featuredImage}" alt="${title}"/>
+                <img src="${featuredImage}" alt="${altTxt}"/>
               </div>              
               <div class="post-info">
                 <h2>${title}</h2>
@@ -89,6 +96,7 @@ async function getPosts() {
       }
     }
 
+    // add carousel move 1 item at a time (setting translateX = 100% on every screensize will result in 1, 2 & max 3 new items each time the button is pressed, instead of only 1 at all screen sizes.)
     prevButton.addEventListener("click", function () {
       if (direction === -1) {
         direction = 1;

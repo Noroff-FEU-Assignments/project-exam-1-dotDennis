@@ -9,7 +9,7 @@ main {
 }
 
 .carousel-container {
-  width: 100%; /* Width of single post */
+  width: 100%; /* Width of entire carousel */
   height: 70%;
   position: relative;
   margin-top: 2.5rem;
@@ -18,7 +18,7 @@ main {
 .carousel-inner {
   height: 100%;
   overflow: hidden;
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -86,8 +86,6 @@ main {
   height: 100%;
 }
 
-
-
 .carousel-container nav button {
   font-size: 3rem;
   position: absolute;
@@ -116,6 +114,9 @@ button.right {
   }
   .post-link {
     width: calc(100% - 30px); /* 30 is the magic number (padding left/right total) */
+  }
+  .carousel-inner {
+    width: 70%;
   }
   button.left {
     left: 3%;
