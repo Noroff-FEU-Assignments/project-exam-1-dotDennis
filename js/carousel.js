@@ -1,5 +1,6 @@
 const carouselTrack = document.querySelector(".track");
 const loader = document.querySelector(".loader");
+const bodyMainContainer = document.querySelector("main");
 
 // fetch data from api and create carousel html
 const url = "https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed";
@@ -53,80 +54,73 @@ async function getPosts() {
     }
   } catch (error) {
     // if there's an error - display error to user
-    // featuredContainer.innerHTML = createError(error);
+    bodyMainContainer.innerHTML = `
+    <div class="error">
+      <p class="error-txt">Oops! - ${error}</p>
+    </div>`;
     console.log(error);
   } finally {
     // remove loader
     loader.outerHTML = ``;
 
+    // add carousel functionality (has to be done in the finally, as element has to be selected. Great if there's issues in the api call)
+    const carouselItem = document.querySelector(".post-container");
     const nextButton = document.querySelector("#next");
     const prevButton = document.querySelector("#prev");
 
-    let direction = -1;
-
+    // add carousel move 1 item at a time (setting translateX = 100% 1, 2 & max 3 new items each time the button is pressed, instead of only 1 at all screen sizes.)
     window.addEventListener("resize", checkWidth);
 
-    function appendChild() {
+    let carouselItemWidth = carouselItem.getBoundingClientRect().width;
+
+    let carouselItemsShowing = 3;
+
+    function checkItemsShowing() {
       if (window.outerWidth >= 1500) {
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        carouselItemsShowing = 3;
       } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        carouselItemsShowing = 2;
       } else if (window.outerWidth <= 1000) {
-        carouselTrack.appendChild(carouselTrack.firstElementChild);
+        carouselItemsShowing = 1;
       } else {
         return;
       }
     }
+    checkItemsShowing();
 
-    function prependChild() {
-      if (window.outerWidth >= 1500) {
-        carouselTrack.prepend(carouselTrack.lastElementChild);
-        carouselTrack.prepend(carouselTrack.lastElementChild);
-        carouselTrack.prepend(carouselTrack.lastElementChild);
-      } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
-        carouselTrack.prepend(carouselTrack.lastElementChild);
-        carouselTrack.prepend(carouselTrack.lastElementChild);
-      } else if (window.outerWidth <= 1000) {
-        carouselTrack.prepend(carouselTrack.lastElementChild);
-      } else {
-        return;
-      }
+    function checkWidth() {
+      carouselItemWidth = carouselItem.getBoundingClientRect().width;
+      checkItemsShowing();
     }
 
-    // add carousel move 1 item at a time (setting translateX = 100% on every screensize will result in 1, 2 & max 3 new items each time the button is pressed, instead of only 1 at all screen sizes.)
+    let direction = -1;
+
     prevButton.addEventListener("click", function () {
       if (direction === -1) {
         direction = 1;
-        appendChild();
+        for (let i = 0; i < carouselItemsShowing; i++) {
+          carouselTrack.appendChild(carouselTrack.firstElementChild);
+          console.log("appended" + i);
+        }
       }
       direction = 1;
       carouselTrack.style.justifyContent = `flex-end`;
-      if (window.outerWidth >= 1500) {
-        carouselTrack.style.transform = `translateX(33.74%)`;
-      } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
-        carouselTrack.style.transform = `translateX(50%)`;
-      } else if (window.outerWidth <= 1000) {
-        carouselTrack.style.transform = `translateX(100%)`;
-      }
+      carouselTrack.style.transform = `translateX(${carouselItemWidth}px)`;
     });
 
     nextButton.addEventListener("click", function () {
       if (direction === 1) {
         direction = -1;
-        prependChild();
+        for (let i = 0; i < carouselItemsShowing; i++) {
+          carouselTrack.prepend(carouselTrack.lastElementChild);
+          console.log("prepended" + i);
+        }
       }
+      console.log("next");
+
       // direction = -1;
       carouselTrack.style.justifyContent = `flex-start`;
-      if (window.outerWidth >= 1500) {
-        carouselTrack.style.transform = `translateX(-33.74%)`;
-      } else if (window.outerWidth <= 1500 && window.outerWidth >= 1000) {
-        carouselTrack.style.transform = `translateX(-50%)`;
-      } else if (window.outerWidth <= 1000) {
-        carouselTrack.style.transform = `translateX(-100%)`;
-      }
+      carouselTrack.style.transform = `translateX(-${carouselItemWidth}px)`;
     });
 
     carouselTrack.addEventListener("transitionend", function () {
@@ -140,34 +134,10 @@ async function getPosts() {
       carouselTrack.style.transform = `translateX(0)`;
 
       setTimeout(function () {
-        carouselTrack.style.transition = `transform 0.3s ease-out`;
+        carouselTrack.style.transition = `transform 0.33s ease-out`;
       });
     });
   }
 }
 
 getPosts();
-
-// carousel track has been decalared at start of document.
-
-// const carouselWidth = document.querySelector(".carousel-container").offsetWidth;
-
-// console.log(document.querySelector(".carousel-container"));
-
-// console.log(carouselWidth);
-
-// when click next (right button), move slides towards right
-// nextButton.addEventListener("click", function (event) {
-//   const currentItem = carouselTrack.querySelector(".current-item");
-//   const nextItem = currentItem.nextElementSibling;
-
-//   moveToSlide(carouselTrack, currentItem, nextItem);
-// });
-
-// // when click previous (left button), move slides towards left
-// prevButton.addEventListener("click", function (event) {
-//   const currentItem = carouselTrack.querySelector(".current-item");
-//   const previousItem = currentItem.previousElementSibling;
-
-//   moveToSlide(carouselTrack, currentItem, previousItem);
-// });

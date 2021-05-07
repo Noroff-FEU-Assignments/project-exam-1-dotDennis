@@ -7,6 +7,7 @@
 ----  3. Font Styling    ----
 ----  4. Header          ----
 ----  5. Footer          ----
+----  6. Other           ----
 -----------------------------
 -----------------------------
 -----------------------------
@@ -393,6 +394,15 @@ a {
   .main-navigation li a {
     padding: 0 5rem;
   }
+  /* main navigation text - on scroll (applied in hamburgerMenu.js */
+  .main-navigation li a.scrolled {
+    padding: 0 10px;
+    font-size: 34px;
+    color: var(--accent);
+  }
+  .main-navigation li a.scrolled:hover {
+    color: var(--off-white);
+  }
 }
 
 /* Footer */
@@ -402,6 +412,27 @@ footer {
   width: 60%;
   margin: 15rem auto 5rem auto;
   border-top: 2px solid var(--primary);
+}
+
+/*  Other */
+div.error {
+  display: flex;
+  justify-content: center;
+}
+
+div.error p.error-txt {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: var(--warn);
+  border-radius: 500rem; /* stupidly high on purpose, for that nice rounded corner effect */
+}
+
+@media screen and (min-width: 1000px) {
+  div.error {
+    margin-top: 6rem;
+  }
 }
 
 /* temp loader */

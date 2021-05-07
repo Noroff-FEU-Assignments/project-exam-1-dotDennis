@@ -38,7 +38,7 @@ function addClass(event) {
         navContainer.classList.add("slide-out");
         navButton.innerHTML = `<i class="far fa-bars"></i>`;
       }
-    }
+    } //else reset
   } else if (event.target.classList.contains("socials-nav")) {
     event.target.outerHTML = `<i class="fas fa-ellipsis-h"></i>`;
     socialsContainer.classList.remove("slide-in");
@@ -46,6 +46,7 @@ function addClass(event) {
   }
 }
 
+// restyle html objects if screen gets resized. To avoid issues.
 window.addEventListener("resize", checkWidth);
 
 function checkWidth() {
@@ -64,18 +65,18 @@ function checkWidth() {
     navContainer.style.position = "fixed";
     navContainer.style.paddingBottom = "0";
     mainNavLinks.forEach((element) => {
-      element.style.fontSize = "34px";
-      element.style.color = "var(--off-white)";
+      element.removeAttribute("style");
     });
   }
 }
-
-window.addEventListener("scroll", checkScroll);
 
 // select containers
 const logoContainer = document.querySelector(".logo-link");
 const navWrapper = document.querySelector(".menu-wrapper");
 const mainNavLinks = document.querySelectorAll(".main-navigation .nav-link");
+
+// add scroll sticky effect
+window.addEventListener("scroll", checkScroll);
 
 // remove logo on scroll + move some object around
 function checkScroll() {
@@ -85,22 +86,16 @@ function checkScroll() {
       logoContainer.classList.remove("display-block");
       navContainer.style.position = "absolute";
       navContainer.style.paddingBottom = "0";
-      navContainer.position;
       mainNavLinks.forEach((element) => {
-        element.style.padding = "0 10px";
-        element.style.fontSize = "34px";
-        element.style.color = "var(--accent)";
+        element.classList.add("scrolled");
       });
     } else {
       if (window.scrollY === 0) {
         logoContainer.classList.add("display-block");
         logoContainer.classList.remove("display-none");
-        navContainer.style.position = "relative";
-        navContainer.style.paddingBottom = "1rem";
+        navContainer.removeAttribute("style");
         mainNavLinks.forEach((element) => {
-          element.style.padding = "0 5rem";
-          element.style.fontSize = "34px";
-          element.style.color = "var(--off-white)";
+          element.classList.remove("scrolled");
         });
       }
     }

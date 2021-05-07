@@ -1,6 +1,6 @@
 const productsContainer = document.querySelector("section");
 const moreButton = document.querySelector(".view-more");
-// const loader = document.querySelector(".loader");
+const loader = document.querySelector(".loader");
 
 // fetch data from api and create carousel html
 let pageCount = 1;
@@ -54,7 +54,8 @@ async function getPosts() {
     console.log(error);
   } finally {
     // remove loader
-    // loader.classList.remove("loader");
+    loader.outerHTML = "";
+    moreButton.style.display = "flex";
   }
 }
 

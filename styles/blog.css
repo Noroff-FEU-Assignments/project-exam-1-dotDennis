@@ -47,7 +47,7 @@ a {
 button.view-more {
   width: 60%;
   cursor: pointer;
-  display: flex;
+  display: none;
   align-items: center;
   padding: 1rem;
   justify-content: center;
