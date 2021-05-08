@@ -28,7 +28,6 @@ async function getSearchResults() {
     // set document title i
     document.title = `${document.title} ${search.charAt(0).toUpperCase() + search.slice(1)}`;
 
-
     if (!response.ok) {
       searchedText.innerHTML += `<p>Search for '<strong>${search}</strong>' gave no results.</p>`;
     } else {
@@ -80,7 +79,7 @@ function buildHtml(post) {
             </div>
             <div class="post-info">
               <h2>${title}</h2>
-              <p class="link-txt">by <a href="${author}">${author}</a> - ${dateFormatted}</p>
+              <p class="link-txt">by <a href="search.html?search=${author}">${author}</a> - ${dateFormatted}</p>
               <a href="post.html?post=${post.id}">Read more...</a>
             </div>
           </div>`;

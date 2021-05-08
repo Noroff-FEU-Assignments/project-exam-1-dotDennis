@@ -124,7 +124,7 @@ function buildHtml(post) {
         <header>
           <img src="${featuredImage}" alt="${altTxt}" />
           <h2>${title}</h2>
-          <p class="link-txt">By <a href="">${author}</a> - ${dateFormatted}</p>
+          <p class="link-txt">By <a href="search.html?search=${author}">${author}</a> - ${dateFormatted}</p>
         </header>
         <p class="blog-txt">${p1}</p>
         <div class="centre">

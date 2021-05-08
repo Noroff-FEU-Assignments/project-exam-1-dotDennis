@@ -43,7 +43,7 @@ async function getPosts() {
             </div>
             <div class="post-info">
               <h2>${title}</h2>
-              <p class="link-txt">by <a href="${author}">${author}</a> - ${dateFormatted}</p>
+              <p class="link-txt">by <a href="search.html?search=${author}">${author}</a> - ${dateFormatted}</p>
               <a href="post.html?post=${json[i].id}">Read more...</a>
             </div>
           </div>`;
