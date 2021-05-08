@@ -454,6 +454,13 @@ div.error p.error-txt {
   border-radius: 500rem; /* stupidly high on purpose, for that nice rounded corner effect */
 }
 
+input {
+  color: var(--primary);
+}
+textarea {
+  color: var(--primary);
+}
+
 @media screen and (min-width: 1000px) {
   div.error {
     margin-top: 6rem;
