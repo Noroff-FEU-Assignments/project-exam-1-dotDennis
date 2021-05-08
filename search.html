@@ -64,7 +64,12 @@
     </header>
     <main>
       <div class="loader"></div>
-      <div class="search-context"></div>
+      <div class="search-context">
+        <form action="search.html" method="GET">
+          <input class="search-field input" type="text" name="search" />
+          <button class="search-field search" id="searchBtn" type="submit"><i class="far fa-search"></i></button>
+        </form>
+      </div>
       <div class="content">
         <section></section>
       </div>
