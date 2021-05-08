@@ -1,0 +1,13 @@
+.search-context {
+  text-align: center;
+  margin: 1rem 0 3rem 0;
+}
+
+@media screen and (min-width: 1000px) {
+  .search-context {
+    margin: 6rem 0;
+  }
+  section {
+    margin: 0 auto;
+  }
+}

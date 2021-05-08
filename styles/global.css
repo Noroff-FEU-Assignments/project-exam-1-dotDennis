@@ -152,6 +152,7 @@ a {
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0 0 15px var(--primary);
 }
 
 /* mobile menu */
@@ -211,7 +212,6 @@ a {
   transform: translate(-50%, -50%);
   top: 50%;
   left: -100%;
-  /* transform: translateX(-100%); */
   transition: 0.3s ease-in;
   z-index: 98;
 }
@@ -221,7 +221,7 @@ a {
 .slide-in {
   animation: slide-in 0.5s forwards;
   display: flex;
-  opacity: 0%;
+  opacity: 0;
 }
 .slide-out {
   animation: slide-out 0.5s forwards;
@@ -347,7 +347,7 @@ a {
     height: 35px;
   }
   .search-bar input,
-  .search-bar button {
+  .search-bar .search {
     color: var(--primary);
     border: none;
     outline: none;

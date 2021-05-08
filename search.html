@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dennis Løvold | Home</title>
+    <title>Dennis Løvold |</title>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="shortcut icon" sizes="32x32" type="image/x-icon" href="img/favicon-32x32.png" />
@@ -16,8 +16,9 @@
     <script src="https://kit.fontawesome.com/f0bf46977e.js" crossorigin="anonymous"></script>
     <!-- Style components -->
     <link rel="stylesheet" href="styles/global.css" />
-    <!-- Page specific styles -->
-    <link rel="stylesheet" href="styles/index.css" />
+    <!-- Page specific styles (uses blog.css styling) -->
+    <link rel="stylesheet" href="styles/blog.css" />
+    <link rel="stylesheet" href="styles/search.css" />
   </head>
   <body>
     <header>
@@ -63,23 +64,18 @@
     </header>
     <main>
       <div class="loader"></div>
-      <!-- Put buttons in nav -->
-      <div class="carousel-container">
-        <div class="carousel-inner">
-          <div class="track"></div>
-        </div>
-        <nav>
-          <button aria-label="previous-slide" id="prev" class="left"><i class="far fa-chevron-left"></i></button>
-          <button aria-label="next-slide" id="next" class="right"><i class="far fa-chevron-right"></i></button>
-        </nav>
+      <div class="search-context"></div>
+      <div class="content">
+        <section></section>
       </div>
+      <button class="view-more">view more</button>
     </main>
-    <!-- <footer>
+    <footer>
       <div>
         <p>&copy; Dennis Løvold</p>
       </div>
-    </footer> -->
+    </footer>
     <script src="js/hamburgerMenu.js"></script>
-    <script src="js/carousel.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>

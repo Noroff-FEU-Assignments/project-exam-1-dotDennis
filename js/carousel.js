@@ -46,7 +46,7 @@ async function getPosts() {
               </div>              
               <div class="post-info">
                 <h2>${title}</h2>
-                <p>By <a href="serach.html?search=${author}">${author}</a> / ${dateFormatted}</p>
+                <p>By <a href="search.html?search=${author}">${author}</a> / ${dateFormatted}</p>
               </div>
             </div>
             <a href="post.html?post=${json[i].id}" class="post-link"></a>            
