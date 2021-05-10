@@ -183,12 +183,6 @@ a {
   }
 }
 
-.hamburger-menu .main-nav-mobile:focus,
-.hamburger-menu .search:focus,
-.hamburger-menu .socials:focus {
-  -webkit-tap-highlight-color: transparent;
-}
-
 .hamburger-menu .main-nav-mobile:hover,
 .hamburger-menu .search:hover,
 .hamburger-menu .socials:hover {
@@ -353,6 +347,9 @@ a {
     outline: none;
     background: var(--off-white);
   }
+  .search-bar form .search-field.search i {
+    font-size: 1.2rem;
+  }
 
   .social-icons .nav-link i {
     font-size: 40px;
@@ -392,11 +389,12 @@ a {
     padding-bottom: 1rem;
   }
   .main-navigation li a {
-    padding: 0 5rem;
+    margin: 0 5rem;
   }
+
   /* main navigation text - on scroll (applied in hamburgerMenu.js */
   .main-navigation li a.scrolled {
-    padding: 0 10px;
+    margin: 0 10px;
     font-size: 34px;
     color: var(--accent);
   }

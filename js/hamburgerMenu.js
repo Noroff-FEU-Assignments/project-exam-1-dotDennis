@@ -75,7 +75,7 @@ const logoContainer = document.querySelector(".logo-link");
 const navWrapper = document.querySelector(".menu-wrapper");
 const mainNavLinks = document.querySelectorAll(".main-navigation .nav-link");
 
-// add scroll sticky effect
+// the warpper is sticky, but remove some styling on it after > 50Y
 window.addEventListener("scroll", checkScroll);
 
 // remove logo on scroll + move some object around
@@ -103,4 +103,3 @@ function checkScroll() {
     return;
   }
 }
-

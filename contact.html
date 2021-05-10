@@ -11,7 +11,10 @@
     <link rel="shortcut icon" sizes="16x16" type="image/x-icon" href="img/favicon-16x16.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f0bf46977e.js" crossorigin="anonymous"></script>
     <!-- Style components -->
@@ -30,7 +33,9 @@
         <div class="search-bar fixed">
           <form action="search.html" method="GET">
             <input class="search-field input" type="text" name="search" />
-            <button class="search-field search" id="searchBtn" type="submit"><i class="far fa-search"></i></button>
+            <button class="search-field search" id="searchBtn" type="submit">
+              <i class="far fa-search"></i>
+            </button>
           </form>
         </div>
         <a class="logo-link" href="/"><h1>Dennis Løvold</h1></a>
@@ -38,16 +43,24 @@
         <nav class="social-icons wait fixed">
           <ul>
             <li>
-              <a target="_blank" href="http://linkedin.com/in/dotdennis" class="nav-link"><i class="fab fa-linkedin"></i></a>
+              <a target="_blank" href="http://linkedin.com/in/dotdennis" class="nav-link"
+                ><i class="fab fa-linkedin"></i
+              ></a>
             </li>
             <li>
-              <a target="_blank" href="http://instagram.com/dennisloevold" class="nav-link"><i class="fab fa-facebook-square"></i></a>
+              <a target="_blank" href="http://instagram.com/dennisloevold" class="nav-link"
+                ><i class="fab fa-facebook-square"></i
+              ></a>
             </li>
             <li>
-              <a target="_blank" href="http://github.com/dotDennis" class="nav-link"><i class="fab fa-github"></i></a>
+              <a target="_blank" href="http://github.com/dotDennis" class="nav-link"
+                ><i class="fab fa-github"></i
+              ></a>
             </li>
             <li>
-              <a target="_blank" href="https://twitter.com/d0tDennis" class="nav-link"><i class="fab fa-twitter"></i></a>
+              <a target="_blank" href="https://twitter.com/d0tDennis" class="nav-link"
+                ><i class="fab fa-twitter"></i
+              ></a>
             </li>
           </ul>
         </nav>
@@ -63,24 +76,36 @@
     </header>
     <main>
       <section>
+        <div id="successContainer"></div>
         <form class="contact-form">
           <div class="fullName">
             <div class="firstName">
               <label for="firstName">Name*</label>
-              <input placeholder="John" type="text" name="firstName" />
+              <input placeholder="John" type="text" id="firstName" name="firstName" />
+              <span class="error-txt" id="firstNameError">error</span>
             </div>
             <div class="lastName">
               <label for="lastName">Last Name*</label>
-              <input placeholder="Doe" type="text" name="lastName" />
+              <input placeholder="Doe" type="text" id="lastName" name="lastName" />
+              <span class="error-txt" id="lastNameError">error</span>
             </div>
           </div>
-          <label for="email">Email*</label>
-          <input placeholder="example@mail.com" type="text" name="email" />
-          <label for="subject">Subject*</label>
-          <input placeholder="Minimum 15 characters." type="text" name="subject" />
-          <label for="message">Message*</label>
-          <textarea name="message" placeholder="write your message"></textarea>
-          <button class="contact-btn" type="submit">Send</button>
+          <div>
+            <label for="email">Email*</label>
+            <input placeholder="example@mail.com" type="text" id="email" name="email" />
+            <span class="error-txt" id="emailError">error</span>
+          </div>
+          <div>
+            <label for="subject">Subject*</label>
+            <input placeholder="Minimum 15 characters." type="text" id="subject" name="subject" />
+            <span class="error-txt" id="subjectError">error</span>
+          </div>
+          <div>
+            <label for="message">Message*</label>
+            <textarea name="message" id="message" placeholder="write your message"></textarea>
+            <span class="error-txt" id="messageError">error</span>
+          </div>
+          <button class="contact-btn" type="button">Send</button>
         </form>
       </section>
     </main>
@@ -90,5 +115,6 @@
       </div>
     </footer>
     <script src="js/hamburgerMenu.js"></script>
+    <script src="js/formValidate.js"></script>
   </body>
 </html>

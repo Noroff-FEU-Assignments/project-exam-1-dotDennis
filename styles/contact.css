@@ -4,6 +4,12 @@ main section .contact-form {
   width: 100%;
 }
 
+.contact-form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .contact-form input {
   width: 100%;
   display: flex;
@@ -12,17 +18,28 @@ main section .contact-form {
   border: none;
   background: var(--primary-op25);
   margin: 2px 0 1.5rem 0;
+  position: relative;
+  padding-left: 5px;
+  font-family: "Roboto", sans-serif;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom: 2px solid var(--primary);
 }
 
 .contact-form textarea {
   border: none;
   background: var(--primary-op25);
   height: 150px;
+  resize: vertical;
+  max-height: 350px;
 }
 
-.fullName {
+.contact-form .fullName {
   display: flex;
   width: 100%;
+  flex-direction: row;
 }
 
 .fullName div {
@@ -37,8 +54,9 @@ main section .contact-form {
   padding-left: 0.5rem;
 }
 
-.contact-form div.fullName input {
-  width: 100%;
+.contact-form label {
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .contact-btn {
@@ -60,4 +78,8 @@ main section .contact-form {
 .contact-btn:hover {
   color: var(--accent);
   transition: color 0.2s ease-in-out;
+}
+
+.error-txt {
+  display: none;
 }
