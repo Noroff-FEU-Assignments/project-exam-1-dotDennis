@@ -44,7 +44,6 @@ async function fetchPost() {
 
     const modalArr = document.querySelectorAll(".modal");
 
-    // technically don't need a button interaction since code below does it for you.
     modalArr.forEach((el) => {
       el.addEventListener("click", function (clicked) {
         if (clicked.target.classList[0] !== "modal-img") {

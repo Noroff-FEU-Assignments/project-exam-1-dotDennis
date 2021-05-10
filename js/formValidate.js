@@ -33,18 +33,16 @@ const formInputs = () => [
 
 // apply error styling to item(s) passed in as through 'input'. uses (input.target) = false if it's an eventlistener, and (input.target) = true if it's not.
 // because the eventListener does not have a .target value
+// credit to Kasper on the true/false check inside a variable!
 function errorStyling(input) {
-  // credit to Kasper on the true/false check inside a variable!
-  const target = input.target ? input.path[0] : form[input];
+  const target = input.target ? input.composedPath()[0] : form[input];
   target.style.borderBottom = "2px solid var(--warn)";
   target.nextElementSibling.style.display = "block";
 }
 
-// apply success styling to item(s) passed in as through 'input'. uses (input.target) = false if it's an eventlistener, and (input.target) = true if it's not.
-// because the eventListener does not have a .target value
+// apply success styling to item(s)
 function successStyling(input) {
-  // credit to Kasper on the true/false check inside a variable!
-  const target = input.target ? input.path[0] : form[input];
+  const target = input.target ? input.composedPath()[0] : form[input];
   target.style.borderBottom = "2px solid var(--accent)";
   target.nextElementSibling.style.display = "none";
 }
