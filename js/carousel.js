@@ -15,42 +15,7 @@ async function getPosts() {
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
-      const category = json[i]._embedded["wp:term"][0][0].name;
-
-      console.log(json[i]);
-      let title = "Title missing";
-      if (json[i].title.rendered) {
-        title = json[i].title.rendered;
-      }
-      let featuredImage = "img/placeholder-image.png";
-      if (json[i].featured_media !== 0) {
-        featuredImage = json[i]._embedded["wp:featuredmedia"][0].source_url;
-      }
-
-      let altTxt = `Image related to ${title}`;
-      if (json[i].featured_media !== 0) {
-        if (json[i]._embedded["wp:featuredmedia"][0].alt_text) {
-          altTxt = json[i]._embedded["wp:featuredmedia"][0].alt_text;
-        }
-      }
-      // format the date
-      const date = new Date(json[i].date);
-      const format = { day: "numeric", month: "numeric", year: "numeric" };
-      const dateFormatted = date.toLocaleString("en-GB", format);
-      // build html
-      carouselTrack.innerHTML += `
-          <div class="post-container">
-            <div class="post">
-              <div class="img-container">
-                <img src="${featuredImage}" alt="${altTxt}"/>
-              </div>              
-              <div class="post-info">
-                <h2>${title}</h2>
-                <p class="link-txt"><a href="search.html?search=${category} ">${category}</a> - ${dateFormatted}</p>
-              </div>
-            </div>
-            <a href="post.html?post=${json[i].id}" class="post-link"></a>            
-          </div>`;
+      carouselTrack.innerHTML += buildCarousel(json[i]);
     }
   } catch (error) {
     // if there's an error - display error to user

@@ -1,5 +1,43 @@
+function buildCarousel(post) {
+  const category = post._embedded["wp:term"][0][0].name;
+
+  let title = "Title missing";
+  if (post.title.rendered) {
+    title = post.title.rendered;
+  }
+  let featuredImage = "img/placeholder-image.png";
+  if (post.featured_media !== 0) {
+    featuredImage = post._embedded["wp:featuredmedia"][0].source_url;
+  }
+
+  let altTxt = `Image related to ${title}`;
+  if (post.featured_media !== 0) {
+    if (post._embedded["wp:featuredmedia"][0].alt_text) {
+      altTxt = post._embedded["wp:featuredmedia"][0].alt_text;
+    }
+  }
+  // format the date
+  const date = new Date(post.date);
+  const format = { day: "numeric", month: "numeric", year: "numeric" };
+  const dateFormatted = date.toLocaleString("en-GB", format);
+  // build html
+  return `
+          <div class="post-container">
+            <div class="post">
+              <div class="img-container">
+                <img src="${featuredImage}" alt="${altTxt}"/>
+              </div>              
+              <div class="post-info">
+                <h2>${title}</h2>
+                <p class="link-txt"><a href="search.html?q=${category}">${category}</a> - ${dateFormatted}</p>
+              </div>
+            </div>
+            <a href="post.html?post=${post.id}" class="post-link"></a>            
+          </div>`;
+}
+
 function blogFeed(post) {
-  // declare json data that will be used for creating the html
+  // declare postta that will be used for creating the html
   let title = "Title missing";
   if (post.title.rendered) {
     title = post.title.rendered;
@@ -22,7 +60,7 @@ function blogFeed(post) {
             </div>
             <div class="post-info">
               <h2>${title}</h2>
-              <p class="link-txt"><a href="search.html?search=${category}">${category}</a> - ${dateFormatted}</p>
+              <p class="link-txt"><a href="search.html?q=${category}">${category}</a> - ${dateFormatted}</p>
               <a href="post.html?post=${post.id}">Read more...</a>
             </div>
           </div>`;
@@ -111,7 +149,7 @@ function postSpecific(post) {
         <header>
           <img src="${featuredImage}" alt="${altTxt}" />
           <h2>${title}</h2>
-          <p class="link-txt"><a href="search.html?search=${category}">${category}</a> - ${dateFormatted}</p>
+          <p class="link-txt"><a href="search.html?q=${category}">${category}</a> - ${dateFormatted}</p>
         </header>
         <p class="blog-txt">${p1}</p>
         <div class="centre">
