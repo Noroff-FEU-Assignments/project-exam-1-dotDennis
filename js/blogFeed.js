@@ -19,34 +19,8 @@ async function getPosts() {
     }
 
     for (let i = 0; i < json.length; i++) {
-      // declare json data that will be used for creating the html
-      let title = "Title missing";
-      if (json[i].title.rendered) {
-        title = json[i].title.rendered;
-      }
-      let featuredImage = "img/placeholder-image.png";
-      if (json[i].featured_media !== 0) {
-        featuredImage = json[i]._embedded["wp:featuredmedia"][0].source_url;
-      }
-      const author = json[i]._embedded.author[0].name;
-      // format the date
-      const date = new Date(json[i].date);
-      const format = { day: "numeric", month: "numeric", year: "numeric" };
-      const dateFormatted = date.toLocaleString("en-GB", format);
-
-      // build html
-      productsContainer.innerHTML += `
-          <div class="post-container">
-            <div class="post-image">
-              <img src="${featuredImage}" alt="alt-text" />
-              <a href="post.html?post=${json[i].id}"></a>
-            </div>
-            <div class="post-info">
-              <h2>${title}</h2>
-              <p class="link-txt">by <a href="search.html?search=${author}">${author}</a> - ${dateFormatted}</p>
-              <a href="post.html?post=${json[i].id}">Read more...</a>
-            </div>
-          </div>`;
+      // build html in seperate file
+      productsContainer.innerHTML += blogFeed(json[i]);
     }
   } catch (error) {
     // if there's an error - display error to user

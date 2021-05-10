@@ -14,8 +14,8 @@ function validateEmail(email) {
 }
 
 // check if input larger or equal to minLength of 'x'
-function checkLength(target, minLen) {
-  if (target.value.trim().length >= minLen) {
+function checkLength(input, minLen) {
+  if (input.value.trim().length >= minLen) {
     return true;
   } else {
     return false;
@@ -49,18 +49,18 @@ function successStyling(input) {
   target.nextElementSibling.style.display = "none";
 }
 
-// Self explanatory? "if" inputName = firstName.name run case firstName: return boolean ? true : false.
+// Self explanatory? "if" inputName = firstName run case "firstName": return boolean ? true : false.
 function isInputValid(inputName) {
   switch (inputName) {
-    case firstName.name:
+    case "firstName":
       return checkLength(firstName, 3);
-    case lastName.name:
+    case "lastName":
       return checkLength(lastName, 3);
-    case email.name:
+    case "email":
       return validateEmail(email);
-    case subject.name:
+    case "subject":
       return checkLength(subject, 15);
-    case message.name:
+    case "message":
       return checkLength(message, 25);
     default:
       return false;

@@ -11,7 +11,10 @@
     <link rel="shortcut icon" sizes="16x16" type="image/x-icon" href="img/favicon-16x16.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f0bf46977e.js" crossorigin="anonymous"></script>
     <!-- Style components -->
@@ -29,8 +32,10 @@
       <div class="menu-wrapper">
         <div class="search-bar fixed">
           <form action="search.html" method="GET">
-            <input class="search-field input" type="text" name="search" />
-            <button class="search-field search" id="searchBtn" type="submit"><i class="far fa-search"></i></button>
+            <input class="search-field input" type="text" name="q" />
+            <button class="search-field search" id="searchBtn" type="submit">
+              <i class="far fa-search"></i>
+            </button>
           </form>
         </div>
         <a class="logo-link" href="/"><h1>Dennis Løvold</h1></a>
@@ -38,16 +43,24 @@
         <nav class="social-icons wait fixed">
           <ul>
             <li>
-              <a target="_blank" href="http://linkedin.com/in/dotdennis" class="nav-link"><i class="fab fa-linkedin"></i></a>
+              <a target="_blank" href="http://linkedin.com/in/dotdennis" class="nav-link"
+                ><i class="fab fa-linkedin"></i
+              ></a>
             </li>
             <li>
-              <a target="_blank" href="http://instagram.com/dennisloevold" class="nav-link"><i class="fab fa-facebook-square"></i></a>
+              <a target="_blank" href="http://instagram.com/dennisloevold" class="nav-link"
+                ><i class="fab fa-facebook-square"></i
+              ></a>
             </li>
             <li>
-              <a target="_blank" href="http://github.com/dotDennis" class="nav-link"><i class="fab fa-github"></i></a>
+              <a target="_blank" href="http://github.com/dotDennis" class="nav-link"
+                ><i class="fab fa-github"></i
+              ></a>
             </li>
             <li>
-              <a target="_blank" href="https://twitter.com/d0tDennis" class="nav-link"><i class="fab fa-twitter"></i></a>
+              <a target="_blank" href="https://twitter.com/d0tDennis" class="nav-link"
+                ><i class="fab fa-twitter"></i
+              ></a>
             </li>
           </ul>
         </nav>
@@ -70,6 +83,7 @@
       </div>
     </footer>
     <script src="js/hamburgerMenu.js"></script>
+    <script src="js/components/buildPosts.js"></script>
     <script src="js/fetchPost.js"></script>
   </body>
 </html>

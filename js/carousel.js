@@ -15,8 +15,9 @@ async function getPosts() {
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
-      const author = json[i]._embedded.author[0].name;
+      const category = json[i]._embedded["wp:term"][0][0].name;
 
+      console.log(json[i]);
       let title = "Title missing";
       if (json[i].title.rendered) {
         title = json[i].title.rendered;
@@ -36,7 +37,6 @@ async function getPosts() {
       const date = new Date(json[i].date);
       const format = { day: "numeric", month: "numeric", year: "numeric" };
       const dateFormatted = date.toLocaleString("en-GB", format);
-
       // build html
       carouselTrack.innerHTML += `
           <div class="post-container">
@@ -46,7 +46,7 @@ async function getPosts() {
               </div>              
               <div class="post-info">
                 <h2>${title}</h2>
-                <p>By <a href="search.html?search=${author}">${author}</a> / ${dateFormatted}</p>
+                <p class="link-txt"><a href="search.html?search=${category} ">${category}</a> - ${dateFormatted}</p>
               </div>
             </div>
             <a href="post.html?post=${json[i].id}" class="post-link"></a>            
