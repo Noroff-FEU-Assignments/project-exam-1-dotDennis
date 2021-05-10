@@ -7,14 +7,15 @@ const submitButton = document.querySelector(".contact-btn");
 
 // Regex to check if the email is valid, returns ? true : false
 function validateEmail(email) {
-  const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEx =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const patternMatches = regEx.test(email.value);
   return patternMatches;
 }
 
-// check if input is larger than minLength of 'x'
+// check if input larger or equal to minLength of 'x'
 function checkLength(target, minLen) {
-  if (target.value.trim().length > minLen) {
+  if (target.value.trim().length >= minLen) {
     return true;
   } else {
     return false;
@@ -52,9 +53,9 @@ function successStyling(input) {
 function isInputValid(inputName) {
   switch (inputName) {
     case firstName.name:
-      return checkLength(firstName, 5);
+      return checkLength(firstName, 3);
     case lastName.name:
-      return checkLength(lastName, 5);
+      return checkLength(lastName, 3);
     case email.name:
       return validateEmail(email);
     case subject.name:
@@ -88,8 +89,8 @@ formInputs().forEach((element) => {
 function validForm() {
   const [firstName, lastName, email, subject, message] = formInputs();
   const isInputValidArr = [
-    checkLength(firstName, 5),
-    checkLength(lastName, 5),
+    checkLength(firstName, 3),
+    checkLength(lastName, 3),
     validateEmail(email),
     checkLength(subject, 15),
     checkLength(message, 25),
@@ -124,6 +125,7 @@ function handleSubmit() {
     formInputs().forEach((input) => {
       input.removeAttribute("style");
     });
+    window.scrollTo(0, 0);
   }
 }
 

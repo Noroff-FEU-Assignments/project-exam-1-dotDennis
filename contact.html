@@ -80,30 +80,50 @@
         <form class="contact-form">
           <div class="fullName">
             <div class="firstName">
-              <label for="firstName">Name*</label>
+              <label for="firstName">
+                First Name
+                <span class="asterisk">*</span>
+                <span class="asterisk-txt">(minimum 3 characters)</span></label
+              >
               <input placeholder="John" type="text" id="firstName" name="firstName" />
-              <span class="error-txt" id="firstNameError">error</span>
+              <span class="error-txt" id="firstNameError">Must be at least 3 characters long</span>
             </div>
             <div class="lastName">
-              <label for="lastName">Last Name*</label>
+              <label for="lastName">
+                Last Name
+                <span class="asterisk">*</span>
+                <span class="asterisk-txt">(minimum 3 characters)</span>
+              </label>
               <input placeholder="Doe" type="text" id="lastName" name="lastName" />
-              <span class="error-txt" id="lastNameError">error</span>
+              <span class="error-txt" id="lastNameError">Must be at least 3 characters long</span>
             </div>
           </div>
           <div>
-            <label for="email">Email*</label>
+            <label for="email">
+              Email
+              <span class="asterisk">*</span>
+              <span class="asterisk-txt">(must be a valid email address)</span>
+            </label>
             <input placeholder="example@mail.com" type="text" id="email" name="email" />
-            <span class="error-txt" id="emailError">error</span>
+            <span class="error-txt" id="emailError">Must be a valid email address</span>
           </div>
           <div>
-            <label for="subject">Subject*</label>
-            <input placeholder="Minimum 15 characters." type="text" id="subject" name="subject" />
-            <span class="error-txt" id="subjectError">error</span>
+            <label for="subject">
+              Subject
+              <span class="asterisk">*</span>
+              <span class="asterisk-txt">(minimum 15 characters)</span>
+            </label>
+            <input placeholder="Subject of your message" type="text" id="subject" name="subject" />
+            <span class="error-txt" id="subjectError">Must be at least 15 characters long</span>
           </div>
           <div>
-            <label for="message">Message*</label>
+            <label for="message">
+              Message
+              <span class="asterisk">*</span>
+              <span class="asterisk-txt">(minimum 25 characters)</span>
+            </label>
             <textarea name="message" id="message" placeholder="write your message"></textarea>
-            <span class="error-txt" id="messageError">error</span>
+            <span class="error-txt" id="messageError">Must be at least 25 characters long</span>
           </div>
           <button class="contact-btn" type="button">Send</button>
         </form>

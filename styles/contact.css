@@ -14,16 +14,17 @@ main section .contact-form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  height: 40px;
+  height: 50px;
   border: none;
   background: var(--primary-op25);
-  margin: 2px 0 1.5rem 0;
   position: relative;
   padding-left: 5px;
+  font-size: 1rem;
   font-family: "Roboto", sans-serif;
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
+  font-size: 1.1rem;
   outline: none;
   border-bottom: 2px solid var(--primary);
 }
@@ -39,38 +40,32 @@ main section .contact-form {
 .contact-form .fullName {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .fullName div {
   width: 100%;
 }
 
-.fullName div:first-child {
-  padding-right: 0.5rem;
-}
-
-.fullName div:last-child {
-  padding-left: 0.5rem;
-}
-
 .contact-form label {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
 .contact-btn {
+  border: none;
   max-width: 300px;
-  margin: 2.5rem 0;
   cursor: pointer;
   align-items: center;
-  padding: 1rem;
   justify-content: center;
-  font-size: 26px;
+  margin: 2.5rem 0;
+  padding: 0.9rem;
   background: var(--primary);
+  font-size: 1.2rem;
   color: var(--off-white);
   text-transform: capitalize;
-  border: none;
   font-weight: 500;
   transition: color 0.2s ease-in-out;
 }
@@ -82,4 +77,29 @@ main section .contact-form {
 
 .error-txt {
   display: none;
+  font-weight: 500;
+  color: var(--warn);
+}
+
+.asterisk {
+  color: var(--warn);
+}
+
+.asterisk-txt {
+  color: var(--primary);
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .contact-form .fullName {
+    flex-direction: row;
+  }
+  .fullName div:first-child {
+    padding-right: 0.5rem;
+  }
+
+  .fullName div:last-child {
+    padding-left: 0.5rem;
+  }
 }
