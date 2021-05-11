@@ -55,6 +55,10 @@ main section .contact-form {
   margin-bottom: 5px;
 }
 
+label[for=firstName], label[for=lastName] {
+  margin-top: 0;
+}
+
 .contact-btn {
   border: none;
   max-width: 300px;

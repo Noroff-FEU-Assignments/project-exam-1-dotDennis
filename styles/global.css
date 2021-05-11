@@ -314,11 +314,19 @@ a {
     font-size: 4.875rem;
   }
   main {
-    padding-top: 175px;
+    padding-top: 125px;
+  }
+  article,
+  section,
+  div.content section {
+    margin: 4rem auto;
   }
 }
 
 @media screen and (min-width: 1000px) {
+  main {
+    padding-top: 182px; /* Making number === menu-wrapper height on screens larger than 1000px */
+  }
   .hamburger-menu {
     display: none;
   }
@@ -465,7 +473,7 @@ textarea {
     margin-top: 6rem;
   }
   article,
-  section {
+  section, div.content section {
     width: 70%;
     margin: 6rem auto;
   }

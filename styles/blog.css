@@ -24,6 +24,12 @@ div.content section {
 .post-container .post-image {
   display: flex;
   position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post-image:hover {
+  transform: translateY(-7px);
+  transition: transform 0.3s ease-in-out;
 }
 
 .post-image img {
