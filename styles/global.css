@@ -323,7 +323,7 @@ a {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1080px) {
   main {
     padding-top: 182px; /* Making number === menu-wrapper height on screens larger than 1000px */
   }
@@ -428,13 +428,17 @@ footer {
 article,
 section {
   width: 80%;
-  margin: 0 auto;
+  margin: 2.5rem auto;
 }
 
 article nav .icons-container {
   margin: 4rem 0 0 0;
   display: flex;
   padding: 0;
+}
+
+.about-h2 {
+  margin-top: 0;
 }
 
 .icons-container li {
@@ -471,7 +475,14 @@ textarea {
   color: var(--primary);
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 620px) {
+  article,
+  section {
+    margin: 4rem auto;
+  }
+}
+
+@media screen and (min-width: 1080px) {
   div.error {
     margin-top: 6rem;
   }

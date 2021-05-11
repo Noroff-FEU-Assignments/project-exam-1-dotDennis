@@ -89,7 +89,7 @@ button.view-more:hover {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1080px) {
   .content .post-container {
     margin: 0 0 6rem 0;
   }

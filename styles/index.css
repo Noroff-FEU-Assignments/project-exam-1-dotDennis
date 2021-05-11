@@ -104,10 +104,14 @@ button.right {
   right: 0%;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 620px) {
+  /* h1 changes size */
   .carousel-container {
-    margin-top: 6rem;
+    margin-top: 4rem;
   }
+}
+
+@media screen and (min-width: 1000px) {
   .track .post-container {
     width: 50%;
     padding: 0 15px;
@@ -124,6 +128,12 @@ button.right {
 
   button.right {
     right: 3%;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .carousel-container {
+    margin-top: 6rem;
   }
 }
 
