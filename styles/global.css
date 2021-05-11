@@ -348,6 +348,7 @@ a {
   .search-bar form .search-field {
     background: var(--off-white);
     height: 35px;
+    z-index: 101;
   }
   .search-bar input,
   .search-bar .search {
@@ -359,18 +360,20 @@ a {
   .search-bar form .search-field.search i {
     font-size: 1.2rem;
   }
-
+  .social-icons {
+    z-index: 101;
+  }
   .social-icons .nav-link i {
     font-size: 40px;
   }
 
   .social-icons {
-    padding-right: 2.8%;
+    margin-right: 2.8%;
     padding-top: 8px;
     white-space: nowrap;
   }
   .search-bar {
-    padding-left: 2.8%;
+    margin-left: 2.8%;
   }
   /* Magic numbers to make social icons & search bar perfect widths */
   .search-bar form {
@@ -473,7 +476,8 @@ textarea {
     margin-top: 6rem;
   }
   article,
-  section, div.content section {
+  section,
+  div.content section {
     width: 70%;
     margin: 6rem auto;
   }
