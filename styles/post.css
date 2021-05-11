@@ -34,6 +34,7 @@ div.centre {
 div.centre img {
   width: 100%;
   object-fit: cover;
+  max-height: 300px;
 }
 .post-container h3 {
   margin: 1rem 0 -1rem 0;
@@ -87,6 +88,8 @@ article nav .icons-container {
 .modal-img {
   width: 97%;
   max-width: 1000px;
+  max-height: 80vh;
+  object-fit: contain;
 }
 
 .modal-txt {
@@ -140,6 +143,7 @@ article nav .icons-container {
   div.centre {
     flex-flow: row nowrap;
     flex-shrink: 1;
+    max-height: 350px;
   }
   div.centre div {
     padding-left: 1rem;
@@ -149,6 +153,7 @@ article nav .icons-container {
   }
   div.centre img {
     max-width: 30%;
+    max-height: 100%;
     padding: 1rem 0;
   }
   .post-container h2 {

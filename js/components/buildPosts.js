@@ -81,7 +81,7 @@ function postSpecific(post) {
             malesuada dapibus dolor pellentesque luctus. Aliquam erat volutpat. Vivamus consectetur dapibus erat dapibus 
             vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut elementum`;
   if (post.acf.p_1) {
-    paragraph = post.acf.p_1;
+    p1 = post.acf.p_1;
   }
   let p2 = `Maecenas quis ex ac sem pretium vulputate. In finibus augue sed augue volutpat, non tempus felis lacinia. Donec vel 
             leo mi. Aliquam mattis ultrices enim vitae vestibulum. Mauris tincidunt dignissim maximus. Cras id dui et justo egestas 
@@ -90,7 +90,7 @@ function postSpecific(post) {
             In tincidunt mi et tortor euismod vulputate. Nulla porttitor, lorem ac tristique pellentesque, orci ipsum aliquam sem, at 
             rhoncus ligula quam ut orci. Curabitur quis vulputate purus, a luctus lectus. Nunc vitae euismod lorem, vel feugiat `;
   if (post.acf.p_2) {
-    paragraph = post.acf.p_2;
+    p2 = post.acf.p_2;
   }
   let p3 = `Maecenas quis ex ac sem pretium vulputate. In finibus augue sed augue volutpat, non tempus felis lacinia. Donec vel 
             leo mi. Aliquam mattis ultrices enim vitae vestibulum. Mauris tincidunt dignissim maximus. Cras id dui et justo egestas 
@@ -105,7 +105,7 @@ function postSpecific(post) {
             vulputate metus placerat vitae. Pellentesque at dictum metus, id placerat lacus. Ut lorem est, tincidunt a turpis id, 
             sodales vehicula lorem. Ut ut libero eget massa malesuada tempor a in sapien.`;
   if (post.acf.p_3) {
-    paragraph = post.acf.p_3;
+    p3 = post.acf.p_3;
   }
 
   let image_p2 = "img/placeholder-image.png";
@@ -113,14 +113,14 @@ function postSpecific(post) {
     image_p2 = post.acf.image_p2;
   }
 
-  let subtitle_p2 = "Chapter 1";
-  if (post.acf.image_p2) {
-    subtitle_p2 = post.acf.subtitle_p2;
+  let sub_p2 = "Chapter 1";
+  if (post.acf.sub_p2) {
+    sub_p2 = post.acf.sub_p2;
   }
 
-  let subtitle_p3 = "Chapter 2";
-  if (post.acf.image_p3) {
-    subtitle_p3 = post.acf.subtitle_p3;
+  let sub_p3 = "Chapter 2";
+  if (post.acf.sub_p3) {
+    sub_p3 = post.acf.sub_p3;
   }
 
   let featuredImage = "img/placeholder-image.png";
@@ -140,6 +140,15 @@ function postSpecific(post) {
     }
   }
 
+  let captionFeatured = `${title}`;
+  if (post.acf.featuredmedia_caption) {
+    captionFeatured = post.acf.featuredmedia_caption;
+  }
+  let mediaCaption = `${title}`;
+  if (post.acf.image_p2_caption) {
+    mediaCaption = post.acf.image_p2_caption;
+  }
+
   const category = post._embedded["wp:term"][0][0].name;
 
   return `
@@ -147,19 +156,19 @@ function postSpecific(post) {
           <a href="blog.html">Blog</a> / <a href="${document.location.search}">${title}</a>
         </nav>
         <header>
-          <img src="${featuredImage}" alt="${altTxt}" />
+          <img src="${featuredImage}" data-caption="${captionFeatured}" alt="${altTxt}" />
           <h2>${title}</h2>
           <p class="link-txt"><a href="search.html?q=${category}">${category}</a> - ${dateFormatted}</p>
         </header>
         <p class="blog-txt">${p1}</p>
         <div class="centre">
-          <img src="${image_p2}" alt="${altTxt}" />
+          <img src="${image_p2}" data-caption="${mediaCaption}" alt="${altTxt}" />
           <div>
-            <h3>${subtitle_p2}</h3>
+            <h3>${sub_p2}</h3>
             <p class="blog-txt">${p2}</p>
            </div>
         </div>
-        <h3>${subtitle_p3}</h3>
+        <h3>${sub_p3}</h3>
         <p class="blog-txt">${p3}</p>
         <div class="comment-section">
           <a href="">leave a comment</a>
@@ -183,13 +192,13 @@ function postSpecific(post) {
       </article>`;
 }
 
-function buildModal(src, alt) {
+function buildModal(src, alt, caption) {
   return `
   <div class="modal">
     <div class="modal-content">
         <button class="modal-close"><i class="fas fa-times"></i></button>
       <img src="${src}" class="modal-img" alt="${alt}">
-      <span class="modal-txt">${alt}</span>
+      <span class="modal-txt">${caption}</span>
     </div>
   </div>`;
 }

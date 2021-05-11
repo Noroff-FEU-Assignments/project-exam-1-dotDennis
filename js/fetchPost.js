@@ -33,10 +33,10 @@ async function fetchPost() {
     postContainer.classList.remove("loader");
     postContainer.classList.add("post-container");
 
-    // lightbox effect (get a full-view of image, fullscreen on mobile with X in top right.)
+    // Modal (get a full-view of image, fullscreen on mobile with X in top right.)
     const postImages = document.querySelectorAll(".post-container img");
     postImages.forEach((el, index) => {
-      modalContainer.innerHTML += buildModal(el.src, el.alt);
+      modalContainer.innerHTML += buildModal(el.src, el.alt, el.dataset.caption);
       el.addEventListener("click", function () {
         modalArr[index].style.display = "block";
       });

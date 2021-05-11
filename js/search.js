@@ -25,6 +25,7 @@ async function getSearchResults() {
   try {
     const response = await fetch(url);
     const json = await (await fetch(url)).json();
+
     // set document title i
     if (search) {
       document.title = `${document.title} ${search.charAt(0).toUpperCase() + search.slice(1)}`;
