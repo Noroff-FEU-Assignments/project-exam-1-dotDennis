@@ -24,8 +24,7 @@ function checkLength(input, minLen) {
 
 // DOM form input elements, credits to Kasper
 const formInputs = () => [
-  form["firstName"],
-  form["lastName"],
+  form["fullName"],
   form["email"],
   form["subject"],
   form["message"],
@@ -50,10 +49,8 @@ function successStyling(input) {
 // Self explanatory? "if" inputName = firstName run case "firstName": return boolean ? true : false.
 function isInputValid(inputName) {
   switch (inputName) {
-    case "firstName":
-      return checkLength(firstName, 3);
-    case "lastName":
-      return checkLength(lastName, 3);
+    case "fullName":
+      return checkLength(fullName, 5);
     case "email":
       return validateEmail(email);
     case "subject":
@@ -85,10 +82,9 @@ formInputs().forEach((element) => {
 
 // If this is passed, form is valid.
 function validForm() {
-  const [firstName, lastName, email, subject, message] = formInputs();
+  const [fullName, email, subject, message] = formInputs();
   const isInputValidArr = [
-    checkLength(firstName, 3),
-    checkLength(lastName, 3),
+    checkLength(fullName, 5),
     validateEmail(email),
     checkLength(subject, 15),
     checkLength(message, 25),
