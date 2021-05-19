@@ -129,6 +129,24 @@ article nav .icons-container {
   color: var(--accent);
 }
 
+.button-container button {
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: var(--link);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.comment-section > section {
+  all: unset;
+}
+
+.comment-section {
+  display: none;
+}
+
 @media screen and (min-width: 600px) {
   .modal-img {
     width: 80%;

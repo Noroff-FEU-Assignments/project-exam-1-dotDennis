@@ -170,8 +170,8 @@ function postSpecific(post) {
         </div>
         <h3>${sub_p3}</h3>
         <p class="blog-txt">${p3}</p>
-        <div class="comment-section">
-          <a href="">leave a comment</a>
+        <div class="button-container">
+          <button class="comment-btn" id="expandComments" type="button">Leave a comment</button>
         </div>
         <nav>
             <ul class="icons-container">

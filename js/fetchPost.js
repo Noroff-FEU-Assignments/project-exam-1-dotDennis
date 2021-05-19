@@ -26,6 +26,10 @@ async function fetchPost() {
     // build html in individual file
     postContainer.innerHTML = postSpecific(json);
 
+    const commentButton = document.querySelector("#expandComments");
+
+    commentButton.addEventListener("click", expandComments)
+
     document.title = `${document.title} ${json.title.rendered}`;
   } catch (error) {
     console.log(error);
@@ -55,3 +59,9 @@ async function fetchPost() {
 }
 
 fetchPost();
+
+
+const commentSection = document.querySelector(".comment-section")
+function expandComments() {
+  commentSection.style.display = "block"
+}
