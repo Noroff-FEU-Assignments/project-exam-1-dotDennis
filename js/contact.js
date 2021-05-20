@@ -1,6 +1,6 @@
 // declare containers & elements
 const form = document.querySelector(".contact-form");
-const successContainer = document.querySelector("#successContainer");
+const successContainer = document.querySelector(".success-container");
 const submitButton = document.querySelector(".contact-btn");
 
 // Validate input values
@@ -101,16 +101,23 @@ function submitCheckAll() {
 function handleSubmit() {
   if (!validForm()) {
     submitCheckAll();
-    successContainer.innerHTML = ``;
+    form.removeAttribute("style");
+    successContainer.classList.remove("sent");
   } else {
-    form.reset();
-    successContainer.innerHTML = `<p> Your message has been sent! Wohoo! </p>`;
+    form.reset()
+    form.style.visibility = "hidden";
+    successContainer.classList.add("sent");
     formInputs().forEach((input) => {
       input.removeAttribute("style");
     });
-    window.scrollTo(0, 0);
   }
 }
 
 // submit form event listener
 submitButton.addEventListener("click", handleSubmit);
+
+successContainer.addEventListener("click", function () {
+  successContainer.classList.remove("sent");
+  successContainer.classList.add("new")
+  form.removeAttribute("style")
+})
