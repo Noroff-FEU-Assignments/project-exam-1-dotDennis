@@ -13,7 +13,6 @@ let search = params.get("q");
 
 let url = `https://dennisl.no/blogAPI/wp-json/wp/v2/posts?search=${search}&per_page=50&_embed`;
 
-
 // change url & document.title if there's no querystring passed.
 if (!search) {
   url = `https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed&per_page=15`;

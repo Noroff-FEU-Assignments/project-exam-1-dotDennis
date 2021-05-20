@@ -38,15 +38,6 @@ main section .contact-form {
   max-height: 350px;
 }
 
-.contact-form .fullName {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-
-.fullName div {
-  width: 100%;
-}
 
 .contact-form label {
   margin-top: 1.5rem;
@@ -55,7 +46,7 @@ main section .contact-form {
   margin-bottom: 5px;
 }
 
-label[for=firstName], label[for=lastName] {
+label[for=FullName] {
   margin-top: 0;
 }
 
@@ -95,9 +86,6 @@ label[for=firstName], label[for=lastName] {
 }
 
 @media screen and (min-width: 1000px) {
-  .contact-form .fullName {
-    flex-direction: row;
-  }
   .fullName div:first-child {
     padding-right: 0.5rem;
   }

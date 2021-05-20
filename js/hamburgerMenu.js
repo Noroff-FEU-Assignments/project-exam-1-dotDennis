@@ -51,7 +51,7 @@ window.addEventListener("resize", checkWidth);
 
 function checkWidth() {
   // re-style objects
-  if (window.matchMedia("(min-width: 1000px)").matches) {
+  if (window.matchMedia("(min-width: 1080px)").matches) {
     socialsContainer.classList.remove("slide-out", "slide-in");
     navContainer.classList.remove("slide-out", "slide-in");
     socialsContainer.className = "social-icons wait";
@@ -80,7 +80,7 @@ window.addEventListener("scroll", checkScroll);
 
 // remove logo on scroll + move some object around
 function checkScroll() {
-  if (screen.width >= 1000) {
+  if (window.outerWidth >= 1080) {
     if (window.scrollY >= 50) {
       logoContainer.classList.add("display-none");
       logoContainer.classList.remove("display-block");

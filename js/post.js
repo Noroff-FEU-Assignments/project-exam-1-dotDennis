@@ -28,7 +28,7 @@ async function fetchPost() {
 
     const commentButton = document.querySelector("#expandComments");
 
-    commentButton.addEventListener("click", expandComments)
+    commentButton.addEventListener("click", expandComments);
 
     document.title = `${document.title} ${json.title.rendered}`;
   } catch (error) {
@@ -60,8 +60,7 @@ async function fetchPost() {
 
 fetchPost();
 
-
-const commentSection = document.querySelector(".comment-section")
+const commentSection = document.querySelector(".comment-section");
 function expandComments() {
-  commentSection.style.display = "block"
+  commentSection.style.display = "flex";
 }

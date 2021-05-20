@@ -35,6 +35,7 @@ div.centre img {
   width: 100%;
   object-fit: cover;
   max-height: 300px;
+  min-width: 200px;
 }
 .post-container h3 {
   margin: 1rem 0 -1rem 0;
@@ -139,13 +140,162 @@ article nav .icons-container {
   padding: 0;
 }
 
-.comment-section > section {
+/* Comment section */
+
+
+.comment-section > section, .comment-content {
   all: unset;
 }
 
+
+.comment-section .comments {
+  margin-top: 3rem;
+}
+
+.comment-section .comments div {
+  box-shadow: 0 0 9px var(--primary-op25);
+  padding: 1rem 1rem 1rem 1rem;
+  margin: 0 0 1rem 0;
+}
+
+
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* margin-top: 0.5rem; */
+}
+
+.comment-header img {
+  height: 30px;
+  border-radius: 50%;
+}
+
+.comment-header h3, .comment-header p{
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+
+.comment-header span {
+  font-weight: 900;
+}
+
+.comment-header p {
+  font-weight: 300;
+}
+.comments div{
+  max-width: 600px;
+}
 .comment-section {
   display: none;
+  flex-direction: column;
 }
+
+/* Comment form */
+.comment-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+.comment-form form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-form form input {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  border: none;
+  background: var(--primary-op25);
+  position: relative;
+  padding-left: 5px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+.comment-form form input:focus,
+.comment-form form textarea:focus {
+  font-size: 1.05rem;
+  outline: none;
+  border-bottom: 2px solid var(--primary);
+}
+
+.comment-form form textarea {
+  border: none;
+  background: var(--primary-op25);
+  font-size: 1rem;
+  height: 150px;
+  resize: vertical;
+  max-height: 350px;
+}
+
+
+
+.fullName div {
+  width: 100%;
+}
+
+.comment-form label {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+
+
+.comment-send-btn{
+  border: none;
+  max-width: 300px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin: 2.5rem 0;
+  padding: 0.9rem;
+  background: var(--primary);
+  font-size: 1.2rem;
+  color: var(--off-white);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.comment-send-btn:hover {
+  color: var(--accent);
+}
+
+.error-txt {
+  display: none;
+  font-weight: 500;
+  color: var(--warn);
+}
+
+.asterisk {
+  color: var(--warn);
+}
+
+.asterisk-txt {
+  color: var(--primary);
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .fullName div:first-child {
+    padding-right: 0.5rem;
+  }
+
+  .fullName div:last-child {
+    padding-left: 0.5rem;
+  }
+}
+
+
 
 @media screen and (min-width: 600px) {
   .modal-img {
@@ -184,6 +334,10 @@ article nav .icons-container {
     transform-origin: center;
     animation: image-expand 0.6s ease-in-out;
   }
+  .comment-section {
+    width: 70%;
+  }
+
 
   @keyframes image-expand {
     0% {

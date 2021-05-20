@@ -7,8 +7,7 @@ const submitButton = document.querySelector(".contact-btn");
 
 // Regex to check if the email is valid, returns ? true : false
 function validateEmail(email) {
-  const regEx =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const patternMatches = regEx.test(email.value);
   return patternMatches;
 }
@@ -22,13 +21,8 @@ function checkLength(input, minLen) {
   }
 }
 
-// DOM form input elements, credits to Kasper
-const formInputs = () => [
-  form["fullName"],
-  form["email"],
-  form["subject"],
-  form["message"],
-];
+// DOM form input elements, credits to Kasper for teaching me this
+const formInputs = () => [form["fullName"], form["email"], form["subject"], form["message"]];
 
 // apply error styling to item(s) passed in as through 'input'. uses (input.target) = false if it's an eventlistener, and (input.target) = true if it's not.
 // because the eventListener does not have a .target value
@@ -83,12 +77,7 @@ formInputs().forEach((element) => {
 // If this is passed, form is valid.
 function validForm() {
   const [fullName, email, subject, message] = formInputs();
-  const isInputValidArr = [
-    checkLength(fullName, 5),
-    validateEmail(email),
-    checkLength(subject, 15),
-    checkLength(message, 25),
-  ];
+  const isInputValidArr = [checkLength(fullName, 5), validateEmail(email), checkLength(subject, 15), checkLength(message, 25)];
 
   // if n (in this case, the array objects) === true, it will return true, otherwise no return.
   function isTrue(n) {
