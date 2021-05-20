@@ -1,5 +1,5 @@
 const commentCount = document.querySelector(".comment-count");
-const commentsAPI = "https://dennisl.no/blogAPI/wp-json/wp/v2/comments";
+const commentsAPI = "https://dennisl.no/blogAPI/wp-json/wp/v2/comments?per_page=100";
 
 async function fetchComments() {
   const response = await fetch(commentsAPI);
@@ -133,6 +133,12 @@ function submitCheckAll() {
 
 // on button click, check if form is valid, it form isn't valid, check all inputs & apply respective styling to them induvidually.
 // else clear the form & display a success message
+
+
+
+
+
+console.log()
 async function postComment() {
   const [commentName, commentEmail, commentMessage] = formInputs()
   const commentData = JSON.stringify({
@@ -156,11 +162,19 @@ async function postComment() {
 
     try {
       const response = await fetch(commentsAPI, options)
-      submitButton.innerHTML = "post"
       if (response.ok) {
         form.reset()
-        fetchComments()
+        await fetchComments()
+        
         // successContainer.innerHTML = "posted!... Sucess!! wooo!"
+        await new Promise(resolve => setTimeout(resolve, 0))
+        submitButton.innerHTML = "post"
+        console.log(document.querySelector(".comments").children) 
+
+        const element = document.querySelector(".comments").children[0];
+        const yOffset = -element.getBoundingClientRect().height - 20; 
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y});
       }
     } catch(error) {
       const json = await response.json()
