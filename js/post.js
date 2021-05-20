@@ -63,4 +63,5 @@ fetchPost();
 const commentSection = document.querySelector(".comment-section");
 function expandComments() {
   commentSection.style.display = "flex";
+  document.querySelector("#expandComments").style.display = "none";
 }

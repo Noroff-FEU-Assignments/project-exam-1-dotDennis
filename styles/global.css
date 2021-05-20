@@ -420,8 +420,19 @@ footer {
   display: flex;
   justify-content: center;
   width: 60%;
-  margin: 15rem auto 5rem auto;
+  margin: 3rem auto 5rem auto;
   border-top: 2px solid var(--primary);
+}
+footer div {
+  margin-top: 10px;
+  text-align: center;
+  color: rgba(22, 23, 25, 0.65);
+}
+
+footer div p:last-of-type {
+  margin-top: 5px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 /*  Other */

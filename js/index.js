@@ -81,9 +81,7 @@ async function getPosts() {
           console.log("prepended" + i);
         }
       }
-      console.log("next");
 
-      // direction = -1;
       carouselTrack.style.justifyContent = `flex-start`;
       carouselTrack.style.transform = `translateX(-${carouselItemWidth}px)`;
     });

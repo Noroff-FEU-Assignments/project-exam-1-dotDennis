@@ -197,8 +197,10 @@ function buildModal(src, alt, caption) {
   <div class="modal">
     <div class="modal-content">
         <button class="modal-close"><i class="fas fa-times"></i></button>
-      <img src="${src}" class="modal-img" alt="${alt}">
-      <span class="modal-txt">${caption}</span>
+      <figure>
+        <img src="${src}" class="modal-img" alt="${alt}">
+        <figcaption class="modal-txt">${caption}</figcaption>
+      </figure>
     </div>
   </div>`;
 }

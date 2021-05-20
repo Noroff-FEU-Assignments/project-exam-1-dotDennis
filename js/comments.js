@@ -11,12 +11,10 @@ async function fetchComments() {
 fetchComments();
 
 function buildCommentSection(commentsArr) {
-  commentSection.lastElementChild.innerHTML = ""
+  commentSection.firstElementChild.nextElementSibling.innerHTML = ""
 
-  if (!commentsArr.length) {
-    commentSection.firstElementChild.innerHTML = `<a href="#">No comments</a>`;
-  } else {
-    commentSection.firstElementChild.innerHTML = `<a href="#">Comments(${commentsArr.length})</a>`
+  if (commentsArr.length) {
+    commentSection.firstElementChild.innerHTML = `<h3>Comments(${commentsArr.length})</h3>`;
   }
 
   commentsArr.forEach((comment) => {
@@ -24,7 +22,7 @@ function buildCommentSection(commentsArr) {
     const format = { day: "numeric", month: "long", year: "numeric" };
     const dateFormatted = date.toLocaleString("en-GB", format);
 
-    commentSection.lastElementChild.innerHTML += `
+    commentSection.firstElementChild.nextElementSibling.innerHTML += `
              <div>
                  <header class="comment-header">
                      <img src="${comment.author_avatar_urls[96]}" alt="${comment.author_name}'s avatar">
@@ -40,11 +38,10 @@ function buildCommentSection(commentsArr) {
 }
 
 
-
 /* Posting new comments */
 
 // Validate data sent into form:
-const form = document.querySelector(".comment-form form");
+const form = document.querySelector(".comment-form");
 const submitButton = document.querySelector(".comment-send-btn");
 
 function validateEmail(email) {

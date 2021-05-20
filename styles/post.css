@@ -2,14 +2,7 @@ main {
   width: 100%;
 }
 
-.post-container {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-}
+
 
 .post-container img {
   cursor: pointer;
@@ -86,15 +79,20 @@ article nav .icons-container {
   align-items: center;
 }
 
-.modal-img {
+.modal-content figure {
   width: 97%;
   max-width: 1000px;
+}
+
+.modal-img {
+  width: 100%;  
   max-height: 80vh;
   object-fit: contain;
 }
 
 .modal-txt {
   margin-top: 1rem;
+  text-align: center;
 }
 
 .modal-img,
@@ -147,10 +145,11 @@ article nav .icons-container {
   all: unset;
 }
 
-
-.comment-section .comments {
-  margin-top: 3rem;
+.comment-section {
+  margin-top: 0;
 }
+
+
 
 .comment-section .comments div {
   box-shadow: 0 0 9px var(--primary-op25);
@@ -177,6 +176,13 @@ article nav .icons-container {
   margin-block-start: 0;
 }
 
+.comment-section h3 {
+  font-size: 1.5rem;
+}
+
+.comment-header h3, .comment-header p {
+  font-size: 1rem;
+}
 
 .comment-header span {
   font-weight: 900;
@@ -194,20 +200,29 @@ article nav .icons-container {
 }
 
 /* Comment form */
-.comment-form form {
+section.form-container {
+  margin-top: 2rem;
+}
+
+.form-container h3 {
+  margin-bottom: 0;
+  
+}
+
+.comment-form {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 600px;
 }
 
-.comment-form form div {
+.comment-form div {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.comment-form form input {
+.comment-form input {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -216,34 +231,30 @@ article nav .icons-container {
   background: var(--primary-op25);
   position: relative;
   padding-left: 5px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
 }
-.comment-form form input:focus,
-.comment-form form textarea:focus {
-  font-size: 1.05rem;
+.comment-form input:focus,
+.comment-form textarea:focus {
+  font-size: 1.0rem;
   outline: none;
   border-bottom: 2px solid var(--primary);
 }
 
-.comment-form form textarea {
+.comment-form textarea {
   border: none;
   background: var(--primary-op25);
-  font-size: 1rem;
+  font-size: 0.9rem;
   height: 150px;
   resize: vertical;
   max-height: 350px;
+  font-family: "Roboto", sans-serif;
 }
 
-
-
-.fullName div {
-  width: 100%;
-}
 
 .comment-form label {
   margin-top: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 5px;
 }
@@ -298,7 +309,7 @@ article nav .icons-container {
 
 
 @media screen and (min-width: 600px) {
-  .modal-img {
+  .modal-content figure{
     width: 80%;
   }
 }
