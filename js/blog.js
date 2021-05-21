@@ -1,6 +1,7 @@
 const productsContainer = document.querySelector("section");
 const moreButton = document.querySelector(".view-more");
 const loader = document.querySelector(".loader");
+const main = document.querySelector("main");
 
 // fetch data from api and create carousel html
 let pageCount = 1;
@@ -24,7 +25,7 @@ async function getPosts() {
     }
   } catch (error) {
     // if there's an error - display error to user
-    // featuredContainer.innerHTML = createError(error);
+    main.innerHTML = buildError()
     console.log(error);
   } finally {
     // remove loader

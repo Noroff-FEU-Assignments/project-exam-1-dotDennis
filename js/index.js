@@ -1,6 +1,6 @@
 const carouselTrack = document.querySelector(".track");
 const loader = document.querySelector(".loader");
-const bodyMainContainer = document.querySelector("main");
+const main = document.querySelector("main");
 
 // fetch data from api and create carousel html
 const url = "https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed";
@@ -19,10 +19,7 @@ async function getPosts() {
     }
   } catch (error) {
     // if there's an error - display error to user
-    bodyMainContainer.innerHTML = `
-    <div class="error">
-      <p class="error-txt">Oops! - ${error}</p>
-    </div>`;
+    main.innerHTML = buildError();
     console.log(error);
   } finally {
     // remove loader

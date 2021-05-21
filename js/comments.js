@@ -138,7 +138,6 @@ function submitCheckAll() {
 
 
 
-console.log()
 async function postComment() {
   const [commentName, commentEmail, commentMessage] = formInputs()
   const commentData = JSON.stringify({
@@ -177,12 +176,16 @@ async function postComment() {
         window.scrollTo({top: y});
       }
     } catch(error) {
-      const json = await response.json()
-      console.log(json)
-      submitButton.innerHTML = "post"
-      return json;
+      console.log(error)
+      submitButton.innerHTML = "error"
+      setTimeout(resetButton, 3000)
+      return error;
     }
   }
+}
+
+function resetButton() {
+  submitButton.innerHTML = "post"
 }
 
 

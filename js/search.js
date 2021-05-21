@@ -2,6 +2,7 @@
 const postsContainer = document.querySelector("section");
 const loader = document.querySelector(".loader");
 const searchedText = document.querySelector(".search-context");
+const main = document.querySelector("main");
 
 // querystirng
 const queryString = document.location.search;
@@ -43,6 +44,7 @@ async function getSearchResults() {
       }
     }
   } catch (error) {
+    main.innerHTML = buildError()
     console.log(error);
   } finally {
     loader.outerHTML = "";

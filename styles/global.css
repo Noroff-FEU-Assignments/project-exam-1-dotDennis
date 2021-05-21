@@ -133,6 +133,11 @@ a {
   border: none;
 }
 
+.search-bar input {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
 .hamburger-menu {
   position: fixed;
   width: 100%;
@@ -210,6 +215,11 @@ a {
   transition: 0.3s ease-in;
   z-index: 98;
 }
+
+.current-page {
+  border-bottom: 2px solid var(--accent);
+}
+
 
 /* Apply this in javascript when button clicked */
 
@@ -436,6 +446,14 @@ footer div p:last-of-type {
 }
 
 /*  Other */
+input {
+  border-radius: 0;
+}
+
+input[type="text"] {
+  -webkit-appearance: none;
+}
+
 article,
 section {
   width: 80%;
@@ -465,18 +483,21 @@ article nav .icons-container {
   color: var(--accent);
 }
 
-div.error {
+div.status {
   display: flex;
   justify-content: center;
+  background: var(--primary);
+  box-shadow: 0 0 7px var(--primary-op90);
+  width: 100%;
+  border-radius: 500rem; /* stopid high =) for nice rounded effect */
 }
 
-div.error p.error-txt {
-  color: var(--primary);
+div.status p.status-txt {
+  color: var(--warn);
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-align: center;
   padding: 1rem;
-  background: var(--warn);
-  border-radius: 500rem; /* stupidly high on purpose, for that nice rounded corner effect */
 }
 
 input {
@@ -494,7 +515,7 @@ textarea {
 }
 
 @media screen and (min-width: 1080px) {
-  div.error {
+  div.status {
     margin-top: 6rem;
   }
   article,

@@ -1,6 +1,7 @@
 // select containers
 const postContainer = document.querySelector("article");
 const modalContainer = document.querySelector(".modals");
+const main = document.querySelector("main");
 
 // querystirng
 const queryString = document.location.search;
@@ -22,8 +23,9 @@ if (!id) {
 // run a function to fetch the data from the api
 async function fetchPost() {
   try {
-    const json = await (await fetch(api)).json();
-    // build html in individual file
+
+    const response = await fetch(api)
+    const json = await response.json();
     postContainer.innerHTML = postSpecific(json);
 
     const commentButton = document.querySelector("#expandComments");
@@ -32,7 +34,8 @@ async function fetchPost() {
 
     document.title = `${document.title} ${json.title.rendered}`;
   } catch (error) {
-    console.log(error);
+    main.innerHTML = buildError()
+    console.log(error)
   } finally {
     postContainer.classList.remove("loader");
     postContainer.classList.add("post-container");

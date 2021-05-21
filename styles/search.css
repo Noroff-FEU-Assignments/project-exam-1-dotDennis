@@ -1,3 +1,7 @@
+div.content section {
+  margin: 2rem auto;
+}
+
 .search-context {
   text-align: center;
   margin: 1rem 0 3rem 0;
@@ -47,6 +51,13 @@
   font-size: 1.5rem;
 }
 
+@media screen and (min-width: 620px) {
+  .search-context {
+    text-align: center;
+    margin-top: 3rem;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .search-context form {
     width: 65%;
@@ -55,11 +66,9 @@
 
 @media screen and (min-width: 1000px) {
   .search-context {
-    margin: 6rem 0;
+    margin: 6rem 0 3rem 0;
   }
-  section {
-    margin: 0 auto;
-  }
+
   .search-context form {
     width: 50%;
   }

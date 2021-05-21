@@ -32,7 +32,7 @@ function buildCarousel(post) {
                 <p class="link-txt"><a href="search.html?q=${category}">${category}</a> - ${dateFormatted}</p>
               </div>
             </div>
-            <a href="post.html?post=${post.id}" class="post-link"></a>            
+            <a aria-label="link to post" href="post.html?post=${post.id}" class="post-link"></a>            
           </div>`;
 }
 
@@ -56,7 +56,7 @@ function blogFeed(post) {
               <div class="post-container">
             <div class="post-image">
               <img src="${featuredImage}" alt="alt-text" />
-              <a href="post.html?post=${post.id}"></a>
+              <a aria-label="link to post" href="post.html?post=${post.id}"></a>
             </div>
             <div class="post-info">
               <h2>${title}</h2>
@@ -176,16 +176,16 @@ function postSpecific(post) {
         <nav>
             <ul class="icons-container">
               <li>
-                <a target="_blank" href="http://linkedin.com/in/dotdennis" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Open LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dotdennis" class="social-icon"><i class="fab fa-linkedin"></i></a>
               </li>
               <li>
-                <a target="_blank" href="http://instagram.com/dennisloevold" class="social-icon"><i class="fab fa-facebook-square"></i></a>
+                <a aria-label="Open Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dennisloevold" class="social-icon"><i class="fab fa-facebook-square"></i></a>
               </li>
               <li>
-                <a target="_blank" href="http://github.com/dotDennis" class="social-icon"><i class="fab fa-github"></i></a>
+                <a aria-label="Open Github" target="_blank" rel="noopener" href="https://github.com/dotDennis" class="social-icon"><i class="fab fa-github"></i></a>
               </li>
               <li>
-                <a target="_blank" href="https://twitter.com/d0tDennis" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a aria-label="Open Twitter" target="_blank" rel="noopener" href="https://twitter.com/d0tDennis" class="social-icon"><i class="fab fa-twitter"></i></a>
               </li>
             </ul>
           </nav>
@@ -203,4 +203,13 @@ function buildModal(src, alt, caption) {
       </figure>
     </div>
   </div>`;
+}
+
+function buildError() {
+  return `
+    <section>
+      <div class="status">
+        <p class="status-txt">Oops! Something went wrong while building the site. Please contact Dennis if this issue persists</p>
+      </div>
+    </section>`;
 }

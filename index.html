@@ -22,15 +22,15 @@
   <body>
     <header>
       <div class="hamburger-menu">
-        <button class="main-nav-mobile"><i class="far fa-bars"></i></button>
-        <button class="socials"><i class="fas fa-ellipsis-h"></i></button>
-        <a class="search" href="search.html"><i class="far fa-search"></i></a>
+        <button aria-label="toggle menu" class="main-nav-mobile"><i class="far fa-bars"></i></button>
+        <button aria-label="toggle socials menu" class="socials"><i class="fas fa-ellipsis-h"></i></button>
+        <a aria-label="search" class="search" href="search.html"><i class="far fa-search"></i></a>
       </div>
       <div class="menu-wrapper">
         <div class="search-bar fixed">
           <form action="search.html" method="GET">
-            <input class="search-field input" type="text" name="q" />
-            <button class="search-field search" id="searchBtn" type="submit">
+            <input aria-label="Search content" class="search-field input" type="text" name="q" />
+            <button aria-label="Search button" class="search-field search searchBtn" type="submit">
               <i class="far fa-search"></i>
             </button>
           </form>
@@ -40,22 +40,22 @@
         <nav class="social-icons wait fixed">
           <ul>
             <li>
-              <a target="_blank" href="http://linkedin.com/in/dotdennis" class="nav-link"><i class="fab fa-linkedin"></i></a>
+              <a aria-label="Open LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dotdennis" class="nav-link"><i class="fab fa-linkedin"></i></a>
             </li>
             <li>
-              <a target="_blank" href="http://instagram.com/dennisloevold" class="nav-link"><i class="fab fa-facebook-square"></i></a>
+              <a aria-label="Open Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dennisloevold" class="nav-link"><i class="fab fa-facebook-square"></i></a>
             </li>
             <li>
-              <a target="_blank" href="http://github.com/dotDennis" class="nav-link"><i class="fab fa-github"></i></a>
+              <a aria-label="Open Github" target="_blank" rel="noopener" href="https://github.com/dotDennis" class="nav-link"><i class="fab fa-github"></i></a>
             </li>
             <li>
-              <a target="_blank" href="https://twitter.com/d0tDennis" class="nav-link"><i class="fab fa-twitter"></i></a>
+              <a aria-label="Open Twitter" target="_blank" rel="noopener" href="https://twitter.com/d0tDennis" class="nav-link"><i class="fab fa-twitter"></i></a>
             </li>
           </ul>
         </nav>
         <nav class="main-navigation wait fixed">
           <ul>
-            <li><a class="nav-link" href="/">home</a></li>
+            <li><a class="nav-link current-page" href="/">home</a></li>
             <li><a class="nav-link" href="blog.html">blog</a></li>
             <li><a class="nav-link" href="about.html">about</a></li>
             <li><a class="nav-link" href="contact.html">contact</a></li>
@@ -65,11 +65,13 @@
     </header>
     <main>
       <div class="loader"></div>
-      <!-- Put buttons in nav -->
-      <div class="carousel-container">
+      <section class="carousel-container">
+        <!-- inner container for the carousel, needed for entire loop of functions to work -->
         <div class="carousel-inner">
+          <!-- posts come inside the 'track' container -->
           <div class="track"></div>
         </div>
+      <!-- Left/Right buttons in nav -->
         <nav>
           <button accesskey="l" aria-label="previous-slide" id="prev" class="left">
             <i class="far fa-chevron-left"></i>
@@ -78,7 +80,7 @@
             <i class="far fa-chevron-right"></i>
           </button>
         </nav>
-      </div>
+      </section>
     </main>
     <script src="js/hamburgerMenu.js"></script>
     <script src="js/components/buildPosts.js"></script>
