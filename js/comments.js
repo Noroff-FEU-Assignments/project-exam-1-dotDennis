@@ -1,4 +1,4 @@
-import { ID } from "./components/global.js";
+import { ID, buildComments } from "./components/global.js";
 import { commentSection } from "./post.js"
 
 const commentsAPI = "https://dennisl.no/blogAPI/wp-json/wp/v2/comments?per_page=100";
@@ -20,22 +20,9 @@ function buildCommentSection(commentsArr) {
   }
 
   commentsArr.forEach((comment) => {
-    const date = new Date(comment.date);
-    const format = { day: "numeric", month: "long", year: "numeric" };
-    const dateFormatted = date.toLocaleString("en-GB", format);
 
-    commentSection.firstElementChild.nextElementSibling.innerHTML += `
-             <div>
-                 <header class="comment-header">
-                     <img src="${comment.author_avatar_urls[96]}" alt="${comment.author_name}'s avatar">
-                     <h3>${comment.author_name}</h3>
-                     <span>·</span>
-                     <p>${dateFormatted + " " + comment.date.split("T")[1].substring(0, 5)}</p>
-                 </header>
-                 <section class="comment-content">
-                     ${comment.content.rendered}
-                 </section>
-             </div>`;
+
+    commentSection.firstElementChild.nextElementSibling.innerHTML += buildComments(comment)
   });
 }
 
@@ -80,16 +67,16 @@ function successStyling(input) {
 
 // "if" inputName = email run case "email": return boolean ? true : false (true false is returned from the function ran inside the case).
 function isInputValid(inputName) {
-  switch (inputName) {
-    case "commentName":
-      return checkLength(commentName, 5);
-    case "commentEmail":
-      return validateEmail(commentEmail);
-    case "commentMessage":
-      return checkLength(commentMessage, 25);
-    default:
-      return false;
+  if (inputName === "commentName") {
+    return checkLength(commentName, 5);
   }
+  if (inputName === "commentEmail") {
+    return validateEmail(commentEmail);
+  }
+  if (inputName === "commentMessage") {
+    return checkLength(commentMessage, 25);
+  }
+  return false;
 }
 
 // Function connected from event listener, to check for input changes. Then check if its valid, then apply respsctive styling
@@ -125,7 +112,7 @@ function validForm() {
   return isFormValid;
 }
 
-// function check every input through a switch statement if it's valid. If this returns true, apply successStyling, else if return = false, apply errorStyling.
+// function check every input through a function of if statements if it's valid. If this returns true, apply successStyling, else if return = false, apply errorStyling.
 function submitCheckAll() {
   formInputs().forEach(function (input) {
     isInputValid(input.name) ? successStyling(input.name) : errorStyling(input.name);
@@ -141,7 +128,7 @@ async function postComment() {
     author_name: commentName.value,
     author_email: commentEmail.value,
     content: commentMessage.value,
-    post: id,
+    post: ID,
   });
 
   const options = {
@@ -152,7 +139,6 @@ async function postComment() {
 
   if (!validForm()) {
     submitCheckAll();
-    // successContainer.innerHTML = ``;
   } else {
     submitButton.innerHTML = "posting...";
 
@@ -163,7 +149,6 @@ async function postComment() {
         await fetchComments();
 
         // wait fetchComments
-        await new Promise((resolve) => setTimeout(resolve, 0));
         submitButton.innerHTML = "post";
 
         const element = document.querySelector(".comments").children[0];

@@ -51,18 +51,19 @@ function successStyling(input) {
 
 // Self explanatory? "if" inputName = firstName run case "firstName": return boolean ? true : false.
 function isInputValid(inputName) {
-  switch (inputName) {
-    case "fullName":
-      return checkLength(fullName, 5);
-    case "email":
-      return validateEmail(email);
-    case "subject":
-      return checkLength(subject, 15);
-    case "message":
-      return checkLength(message, 25);
-    default:
-      return false;
+  if (inputName === "fullName") {
+    return checkLength(fullName, 5);
   }
+  if (inputName === "email") {
+    return validateEmail(email);
+  }
+  if (inputName === "subject") {
+    return checkLength(subject, 15);
+  }
+  if (inputName === "message") {
+    return checkLength(message, 25)
+  }
+  return false;
 }
 
 // Function connected from event listener, to check for input changes. Then check if its valid, then apply respsctive styling
@@ -98,7 +99,7 @@ function validForm() {
   return isFormValid;
 }
 
-// function check every input through a switch statement if it's valid. If this returns true, apply successStyling, else if return = false, apply errorStyling.
+// function check every input through a functon of if statements if it's valid. If this returns true, apply successStyling, else if return = false, apply errorStyling.
 function submitCheckAll() {
   formInputs().forEach(function (input) {
     isInputValid(input.name) ? successStyling(input.name) : errorStyling(input.name);

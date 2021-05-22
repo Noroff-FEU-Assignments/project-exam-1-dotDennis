@@ -8,7 +8,7 @@ const main = document.querySelector("main");
 // fetch data from api and create carousel html
 const url = `${POSTS}?_embed`;
 
-async function getPosts() {
+async function fetchPosts() {
   try {
     // await response then await json
     const response = await fetch(url);
@@ -16,19 +16,14 @@ async function getPosts() {
 
     carouselTrack.innerHTML = "";
 
+    console.log(carouselTrack.innerHTML)
+
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
       carouselTrack.innerHTML += buildCarousel(json[i]);
     }
-  } catch (error) {
-    // if there's an error - display error to user
-    main.innerHTML = buildError();
-    console.log(error);
-  } finally {
-    // remove loader
-    loader.outerHTML = ``;
 
-    // add carousel functionality (has to be done in the finally, as element has to be selected. Great if there's issues in the api call)
+    // then select the containers made and listen for clicks for change.
     const carouselItem = document.querySelector(".post-container");
     const nextButton = document.querySelector("#next");
     const prevButton = document.querySelector("#prev");
@@ -97,8 +92,19 @@ async function getPosts() {
       setTimeout(function () {
         carouselTrack.style.transition = `transform 0.33s ease-out`;
       });
-    });
+    
+    }); 
+  } catch (error) {
+    // if there's an error - display error to user
+    main.innerHTML = buildError();
+    console.log(error);
+  } finally {
+    // remove loader
+    loader.outerHTML = ``;
+
+    // add carousel functionality (has to be done in the finally, as element has to be selected. Great if there's issues in the api call)
+    
   }
 }
 
-getPosts();
+fetchPosts();
