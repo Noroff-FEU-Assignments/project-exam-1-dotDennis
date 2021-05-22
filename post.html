@@ -9,10 +9,11 @@
     <meta name="author" content="Dennis Solvåg Løvold" />
     <link rel="shortcut icon" sizes="32x32" type="image/x-icon" href="img/favicon-32x32.png" />
     <link rel="shortcut icon" sizes="16x16" type="image/x-icon" href="img/favicon-16x16.png" />
-    
+
     <!-- Fonts -->
+    <link rel="preconnect" href="styles/fonts/GamePlayed.otf" as="font" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" defer/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" defer />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f0bf46977e.js" crossorigin="anonymous" defer></script>
     <!-- Style components -->
@@ -30,7 +31,7 @@
       <div class="menu-wrapper">
         <div class="search-bar fixed">
           <form action="search.html" method="GET">
-            <input aria-label="Search content" class="search-field input" type="text" name="q" />
+            <input aria-label="Search content" class="search-field input" type="text" name="q" minlength="2" />
             <button aria-label="Search button" class="search-field search searchBtn" type="submit">
               <i class="far fa-search"></i>
             </button>
@@ -109,12 +110,11 @@
       <div>
         <p>All content on this blog is fictional and only used for my exam.</p>
         <p>&copy; Copyright 2021 <strong>Dennis Løvold</strong>. All rights reserved.</p>
-
       </div>
     </footer>
-    <script src="js/hamburgerMenu.js"></script>
-    <script src="js/components/buildPosts.js"></script>
-    <script src="js/post.js"></script>
-    <script src="js/comments.js"></script>
+    <script src="js/hamburgerMenu.js" defer></script>
+    <script src="js/components/buildPosts.js" defer></script>
+    <script src="js/post.js" defer></script>
+    <script src="js/comments.js" defer></script>
   </body>
 </html>

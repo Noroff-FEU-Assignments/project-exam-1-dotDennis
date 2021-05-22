@@ -62,7 +62,6 @@ async function getPosts() {
         direction = 1;
         for (let i = 0; i < carouselItemsShowing; i++) {
           carouselTrack.appendChild(carouselTrack.firstElementChild);
-          console.log("appended" + i);
         }
       }
       direction = 1;
@@ -75,7 +74,6 @@ async function getPosts() {
         direction = -1;
         for (let i = 0; i < carouselItemsShowing; i++) {
           carouselTrack.prepend(carouselTrack.lastElementChild);
-          console.log("prepended" + i);
         }
       }
 
