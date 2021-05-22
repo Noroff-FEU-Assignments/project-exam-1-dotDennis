@@ -237,11 +237,9 @@ function buildCarousel(post) {
   }
   function buildContactError(errorMessage) {
     return `
-      <section>
         <div class="status">
           <p class="status-txt">Oops! ${errorMessage}</p>
-        </div>
-      </section>`;
+        </div>`;
   }
   
   

@@ -4,7 +4,7 @@ import { buildContactError } from "./components/global.js"
 const form = document.querySelector(".contact-form");
 const successContainer = document.querySelector(".success-container");
 const submitButton = document.querySelector(".contact-btn");
-const main = document.querySelector("main");
+const errorContainer = document.querySelector(".error-container");
 
 // api url etc.
 
@@ -109,6 +109,7 @@ function submitCheckAll() {
 // on button click, check if form is valid, it form isn't valid, check all inputs & apply respective styling to them induvidually.
 // else clear the form & display a success message
 async function handleSubmit() {
+  errorContainer.innerHTML = ""
   const body = new FormData(form)
 
   if (!validForm()) {
@@ -132,20 +133,25 @@ async function handleSubmit() {
           input.removeAttribute("style");
         });
       } else {
-        submitButton.innerHTML = "error";
-        formInputs().forEach((input) => {
-          input.removeAttribute("style");
-        });
-        main.innerHTML = buildContactError(json.message) + main.innerHTML 
+       sendError(json.message)
       }
     } catch(error) {
-      submitButton.innerHTML = "error";
-      formInputs().forEach((input) => {
-        input.removeAttribute("style");
-      });
-      main.innerHTML = buildContactError(error) + main.innerHTML 
-
+      sendError(error)
   }}
+}
+
+function sendError(error) {
+  window.scrollTo({ top: 0});
+  submitButton.innerHTML = "error"
+  submitButton.disabled = true;
+  setTimeout(resetButton, 7000);
+  errorContainer.innerHTML = buildContactError(error)
+}
+
+
+function resetButton() {
+  submitButton.disabled = false
+  submitButton.innerHTML = "Send"
 }
 
 // submit form event listener
