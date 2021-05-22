@@ -1,3 +1,6 @@
+// Import posts (url)
+import { POSTS, buildBlog, buildError } from "./components/global.js"
+
 // select containers
 const postsContainer = document.querySelector("section");
 const loader = document.querySelector(".loader");
@@ -15,9 +18,11 @@ let search = params.get("q");
 let url = `https://dennisl.no/blogAPI//wp-json/relevanssi/v1/search?s=${search}&posts_per_page=15&_embed`;
 
 
+
+
 // change url & document.title if there's no querystring passed.
 if (!search) {
-  url = `https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed&per_page=15`;
+  url = `${POSTS}?_embed&per_page=15`;
   document.title = `${document.title} Search`;
 }
 
@@ -41,7 +46,7 @@ async function getSearchResults() {
       }
       for (let i = 0; i < json.length; i++) {
         // build html in seperate file
-        postsContainer.innerHTML += blogFeed(json[i]);
+        postsContainer.innerHTML += buildBlog(json[i]);
       }
     }
   } catch (error) {
@@ -54,7 +59,3 @@ async function getSearchResults() {
 
 getSearchResults();
 
-//   const productName = json[i].name;
-//   const image = json[i].images[0].src;
-//   const price = json[i].price_html;
-//   const rating = json[i].attributes[0].options[0];

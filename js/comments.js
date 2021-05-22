@@ -1,10 +1,12 @@
-const commentCount = document.querySelector(".comment-count");
+import { ID } from "./components/global.js";
+import { commentSection } from "./post.js"
+
 const commentsAPI = "https://dennisl.no/blogAPI/wp-json/wp/v2/comments?per_page=100";
 
 async function fetchComments() {
   const response = await fetch(commentsAPI);
   const json = await response.json();
-  const comments = json.filter((comment) => comment.post === parseInt(id));
+  const comments = json.filter((comment) => comment.post === parseInt(ID));
   return buildCommentSection(comments);
 }
 

@@ -1,9 +1,12 @@
+// Import posts (url)
+import { POSTS, buildCarousel, buildError } from "./components/global.js";
+
 const carouselTrack = document.querySelector(".track");
 const loader = document.querySelector(".loader");
 const main = document.querySelector("main");
 
 // fetch data from api and create carousel html
-const url = "https://dennisl.no/blogAPI/wp-json/wp/v2/posts?_embed";
+const url = `${POSTS}?_embed`;
 
 async function getPosts() {
   try {

@@ -1,22 +1,17 @@
+// Import posts (url)
+import { POSTS, ID, buildPost, buildModal, buildError } from "../js/components/global.js"
+
+
 // select containers
 const postContainer = document.querySelector("article");
 const modalContainer = document.querySelector(".modals");
 const main = document.querySelector("main");
 
-// querystirng
-const queryString = document.location.search;
 
-const params = new URLSearchParams(queryString);
-
-// get the id from the querystring
-const id = params.get("post");
-
-const url = "https://dennisl.no/blogAPI/wp-json/wp/v2/posts";
-
-const api = `${url}/${id}?_embed`;
+const api = `${POSTS}/${ID}?_embed`;
 
 // redirect if id = null;
-if (!id) {
+if (!ID) {
   location.href = "index.html";
 }
 
@@ -26,7 +21,7 @@ async function fetchPost() {
 
     const response = await fetch(api)
     const json = await response.json();
-    postContainer.innerHTML = postSpecific(json);
+    postContainer.innerHTML = buildPost(json);
 
     const commentButton = document.querySelector("#expandComments");
 
@@ -68,3 +63,5 @@ function expandComments() {
   commentSection.style.display = "flex";
   document.querySelector("#expandComments").style.display = "none";
 }
+
+export { commentSection }

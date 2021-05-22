@@ -1,7 +1,16 @@
+import { buildContactError } from "./components/global.js"
+
 // declare containers & elements
 const form = document.querySelector(".contact-form");
 const successContainer = document.querySelector(".success-container");
 const submitButton = document.querySelector(".contact-btn");
+const main = document.querySelector("main");
+
+// api url etc.
+
+const API = "https://www.dennisl.no/blogAPI/wp-json/contact-form-7/v1/contact-forms/234/feedback"
+
+
 
 // Validate input values
 
@@ -96,21 +105,47 @@ function submitCheckAll() {
   });
 }
 
+
 // on button click, check if form is valid, it form isn't valid, check all inputs & apply respective styling to them induvidually.
 // else clear the form & display a success message
-function handleSubmit() {
+async function handleSubmit() {
+  const body = new FormData(form)
+
   if (!validForm()) {
     submitCheckAll();
     form.removeAttribute("style");
     successContainer.classList.remove("sent");
   } else {
-    form.reset()
-    form.style.visibility = "hidden";
-    successContainer.classList.add("sent");
-    formInputs().forEach((input) => {
-      input.removeAttribute("style");
-    });
-  }
+    submitButton.innerHTML = "Sending..."
+
+    try {
+      const response = await fetch(API, {method: "POST",  body})
+      const json = await response.json();
+
+
+      if (json.status === "mail_sent" && (validForm())) {
+        form.reset()
+        submitButton.innerHTML = "Send"
+        form.style.visibility = "hidden";
+        successContainer.classList.add("sent");
+        formInputs().forEach((input) => {
+          input.removeAttribute("style");
+        });
+      } else {
+        submitButton.innerHTML = "error";
+        formInputs().forEach((input) => {
+          input.removeAttribute("style");
+        });
+        main.innerHTML = buildContactError(json.message) + main.innerHTML 
+      }
+    } catch(error) {
+      submitButton.innerHTML = "error";
+      formInputs().forEach((input) => {
+        input.removeAttribute("style");
+      });
+      main.innerHTML = buildContactError(error) + main.innerHTML 
+
+  }}
 }
 
 // submit form event listener
@@ -121,3 +156,4 @@ successContainer.addEventListener("click", function () {
   successContainer.classList.add("new")
   form.removeAttribute("style")
 })
+

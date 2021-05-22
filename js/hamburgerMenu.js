@@ -1,3 +1,4 @@
+// select containers
 const navButton = document.querySelector(".main-nav-mobile");
 const navContainer = document.querySelector(".main-navigation");
 const socialsButton = document.querySelector(".socials");
