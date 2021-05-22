@@ -71,8 +71,15 @@ function postSpecific(post) {
   const date = new Date(post.date);
   const format = { day: "numeric", month: "numeric", year: "numeric" };
   const dateFormatted = date.toLocaleString("en-GB", format);
+  
 
   // declare default values, if it returns false, display default.
+
+  let title = "Title missing";
+  if (post.title.rendered) {
+    title = post.title.rendered;
+  }
+  
   let p1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et volutpat purus. Pellentesque habitant morbi 
             tristique senectus et netus et malesuada fames ac turpis egestas. Cras condimentum erat erat, eget cursus nibh 
             pellentesque ac. Integer varius, velit vitae ornare vehicula, sapien libero ornare justo, in maximus diam elit nec est. 
@@ -112,6 +119,10 @@ function postSpecific(post) {
   if (post.acf.image_p2) {
     image_p2 = post.acf.image_p2;
   }
+  let image_p2_alt = `Image related to ${title}`;
+  if (post.acf.image_p2_alt) {
+    image_p2_alt = post.acf.image_p2_alt;
+  }
 
   let sub_p2 = "Chapter 1";
   if (post.acf.sub_p2) {
@@ -128,10 +139,7 @@ function postSpecific(post) {
     featuredImage = post._embedded["wp:featuredmedia"][0].source_url;
   }
 
-  let title = "Title missing";
-  if (post.title.rendered) {
-    title = post.title.rendered;
-  }
+
 
   let altTxt = `Image related to ${title}`;
   if (post.featured_media !== 0) {
@@ -162,7 +170,7 @@ function postSpecific(post) {
         </header>
         <p class="blog-txt">${p1}</p>
         <div class="centre">
-          <img src="${image_p2}" data-caption="${mediaCaption}" alt="${altTxt}" />
+          <img src="${image_p2}" data-caption="${mediaCaption}" alt="${image_p2_alt}" />
           <div>
             <h3>${sub_p2}</h3>
             <p class="blog-txt">${p2}</p>

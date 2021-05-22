@@ -26,6 +26,7 @@ async function fetchPost() {
 
     const response = await fetch(api)
     const json = await response.json();
+    console.log(json)
     postContainer.innerHTML = postSpecific(json);
 
     const commentButton = document.querySelector("#expandComments");

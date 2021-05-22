@@ -4,14 +4,14 @@ const commentsAPI = "https://dennisl.no/blogAPI/wp-json/wp/v2/comments?per_page=
 async function fetchComments() {
   const response = await fetch(commentsAPI);
   const json = await response.json();
-  const comments = json.filter((comment) => (comment.post === parseInt(id)));
+  const comments = json.filter((comment) => comment.post === parseInt(id));
   return buildCommentSection(comments);
-};
+}
 
 fetchComments();
 
 function buildCommentSection(commentsArr) {
-  commentSection.firstElementChild.nextElementSibling.innerHTML = ""
+  commentSection.firstElementChild.nextElementSibling.innerHTML = "";
 
   if (commentsArr.length) {
     commentSection.firstElementChild.innerHTML = `<h3>Comments(${commentsArr.length})</h3>`;
@@ -36,7 +36,6 @@ function buildCommentSection(commentsArr) {
              </div>`;
   });
 }
-
 
 /* Posting new comments */
 
@@ -132,14 +131,10 @@ function submitCheckAll() {
 }
 
 // on button click, check if form is valid, it form isn't valid, check all inputs & apply respective styling to them induvidually.
-// else clear the form & display a success message
-
-
-
-
+// if valid send data to wordpress, scroll to comment and remove form styling
 
 async function postComment() {
-  const [commentName, commentEmail, commentMessage] = formInputs()
+  const [commentName, commentEmail, commentMessage] = formInputs();
   const commentData = JSON.stringify({
     author_name: commentName.value,
     author_email: commentEmail.value,
@@ -148,46 +143,47 @@ async function postComment() {
   });
 
   const options = {
-    headers: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: commentData,
     method: "post",
-  }
+  };
 
   if (!validForm()) {
     submitCheckAll();
     // successContainer.innerHTML = ``;
   } else {
-    submitButton.innerHTML = "posting..."
+    submitButton.innerHTML = "posting...";
 
     try {
-      const response = await fetch(commentsAPI, options)
+      const response = await fetch(commentsAPI, options);
       if (response.ok) {
-        form.reset()
-        await fetchComments()
-        
-        // successContainer.innerHTML = "posted!... Sucess!! wooo!"
-        await new Promise(resolve => setTimeout(resolve, 0))
-        submitButton.innerHTML = "post"
-        console.log(document.querySelector(".comments").children) 
+        form.reset();
+        await fetchComments();
+
+        // wait fetchComments
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        submitButton.innerHTML = "post";
 
         const element = document.querySelector(".comments").children[0];
-        const yOffset = -element.getBoundingClientRect().height - 20; 
+        const yOffset = -element.getBoundingClientRect().height - 20;
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({top: y});
+        window.scrollTo({ top: y });
+        commentName.removeAttribute("style")
+        commentEmail.removeAttribute("style")
+        commentMessage.removeAttribute("style")
       }
-    } catch(error) {
-      console.log(error)
-      submitButton.innerHTML = "error"
-      setTimeout(resetButton, 3000)
+    } catch (error) {
+      console.log(error);
+      submitButton.innerHTML = "error";
+      setTimeout(resetButton, 3000);
       return error;
     }
   }
 }
 
 function resetButton() {
-  submitButton.innerHTML = "post"
+  submitButton.innerHTML = "post";
 }
-
 
 // submit form event listener
 submitButton.addEventListener("click", postComment);

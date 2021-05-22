@@ -12,7 +12,8 @@ const params = new URLSearchParams(queryString);
 // let search = params.get("search");
 let search = params.get("q");
 
-let url = `https://dennisl.no/blogAPI/wp-json/wp/v2/posts?search=${search}&per_page=50&_embed`;
+let url = `https://dennisl.no/blogAPI//wp-json/relevanssi/v1/search?s=${search}&posts_per_page=15&_embed`;
+
 
 // change url & document.title if there's no querystring passed.
 if (!search) {

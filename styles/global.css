@@ -16,6 +16,7 @@
 @font-face {
   font-family: "Game Played";
   src: local("Game Played"), local("GamePlayed"), url("fonts/GamePlayed.otf") format("opentype");
+  font-display: swap;
 }
 
 /* Variables */
