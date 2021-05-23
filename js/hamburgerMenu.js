@@ -7,46 +7,46 @@ const socialsContainer = document.querySelector(".social-icons");
 navButton.addEventListener("click", addClass);
 socialsButton.addEventListener("click", addClass);
 
+function setContainerOut(container) {
+  container.classList.remove("slide-in");
+  container.classList.add("slide-out");
+}
+
+function setContainerIn(container) {
+  container.classList.add("slide-in");
+  container.classList.remove("wait");
+  container.classList.remove("slide-out");
+}
+
 function addClass(event) {
   // main-nav expand
   if (event.target.classList.contains("fa-bars")) {
     event.target.outerHTML = `<i class="fas fa-times main-nav"></i>`;
     if (navContainer.classList.contains("slide-out") || navContainer.classList.contains("wait")) {
-      navContainer.classList.add("slide-in");
-      navContainer.classList.remove("wait");
-      navContainer.classList.remove("slide-out");
+      setContainerIn(navContainer);
       if (socialsContainer.classList.contains("slide-in")) {
-        socialsContainer.classList.remove("slide-in");
-        socialsContainer.classList.add("slide-out");
+        setContainerOut(socialsContainer);
         socialsButton.innerHTML = `<i class="fas fa-ellipsis-h"></i>`;
       }
     }
   } else if (event.target.classList.contains("main-nav")) {
     event.target.outerHTML = `<i class="far fa-bars"></i>`;
-    navContainer.classList.remove("slide-in");
-    navContainer.classList.add("slide-out");
+    setContainerOut(navContainer);
   }
 
   // socials expand
   if (event.target.classList.contains("fa-ellipsis-h")) {
     event.target.outerHTML = `<i class="fas fa-times socials-nav"></i>`;
-    if (
-      socialsContainer.classList.contains("slide-out") ||
-      socialsContainer.classList.contains("wait")
-    ) {
-      socialsContainer.classList.add("slide-in");
-      socialsContainer.classList.remove("wait");
-      socialsContainer.classList.remove("slide-out");
+    if (socialsContainer.classList.contains("slide-out") || socialsContainer.classList.contains("wait")) {
+      setContainerIn(socialsContainer);
       if (navContainer.classList.contains("slide-in")) {
-        navContainer.classList.remove("slide-in");
-        navContainer.classList.add("slide-out");
+        setContainerOut(navContainer);
         navButton.innerHTML = `<i class="far fa-bars"></i>`;
       }
     } //else reset
   } else if (event.target.classList.contains("socials-nav")) {
+    setContainerOut(socialsContainer);
     event.target.outerHTML = `<i class="fas fa-ellipsis-h"></i>`;
-    socialsContainer.classList.remove("slide-in");
-    socialsContainer.classList.add("slide-out");
   }
 }
 
@@ -56,8 +56,6 @@ window.addEventListener("resize", checkWidth);
 function checkWidth() {
   // re-style objects
   if (window.matchMedia("(min-width: 1080px)").matches) {
-    socialsContainer.classList.remove("slide-out", "slide-in");
-    navContainer.classList.remove("slide-out", "slide-in");
     socialsContainer.className = "social-icons wait";
     navContainer.className = "main-navigation wait";
     navButton.innerHTML = `<i class="far fa-bars"></i>`;
@@ -82,25 +80,33 @@ const mainNavLinks = document.querySelectorAll(".main-navigation .nav-link");
 // the warpper is sticky, but remove some styling on it after > 50Y
 window.addEventListener("scroll", checkScroll);
 
+function displayBlock(logo, nav, navLinks) {
+  logo.classList.add("display-block");
+  logo.classList.remove("display-none");
+  nav.removeAttribute("style");
+  navLinks.forEach((element) => {
+    element.classList.remove("scrolled");
+  });
+}
+
+function displayNone(logo, nav, navLinks) {
+  logo.classList.add("display-none");
+  logo.classList.remove("display-block");
+  nav.style.position = "absolute";
+  nav.style.paddingBottom = "0";
+  navLinks.forEach((element) => {
+    element.classList.add("scrolled");
+  });
+}
+
 // remove logo on scroll + move some object around
 function checkScroll() {
   if (window.outerWidth >= 1080) {
     if (window.scrollY >= 50) {
-      logoContainer.classList.add("display-none");
-      logoContainer.classList.remove("display-block");
-      navContainer.style.position = "absolute";
-      navContainer.style.paddingBottom = "0";
-      mainNavLinks.forEach((element) => {
-        element.classList.add("scrolled");
-      });
+      displayNone(logoContainer, navContainer, mainNavLinks);
     } else {
       if (window.scrollY === 0) {
-        logoContainer.classList.add("display-block");
-        logoContainer.classList.remove("display-none");
-        navContainer.removeAttribute("style");
-        mainNavLinks.forEach((element) => {
-          element.classList.remove("scrolled");
-        });
+        displayBlock(logoContainer, navContainer, mainNavLinks);
       }
     }
   } else {

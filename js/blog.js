@@ -11,7 +11,7 @@ let pageCount = 1;
 
 let url = `${POSTS}?page=${pageCount}&per_page=10&_embed`;
 
-async function getPosts() {
+async function fetchPosts() {
   try {
     // await response then await json
     const response = await fetch(url);
@@ -32,16 +32,17 @@ async function getPosts() {
     console.log(error);
   } finally {
     // remove loader
-    loader.outerHTML = "";
+    loader.style.display = "none";
+
     moreButton.style.display = "flex";
   }
 }
 
-getPosts();
+fetchPosts();
 
 moreButton.addEventListener("click", function () {
   pageCount++;
   // update the URL used in the GET call
   url = `https://dennisl.no/blogAPI/wp-json/wp/v2/posts?page=${pageCount}&per_page=10&_embed`;
-  getPosts();
+  fetchPosts();
 });

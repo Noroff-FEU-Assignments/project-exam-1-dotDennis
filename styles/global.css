@@ -190,12 +190,6 @@ a {
   }
 }
 
-.hamburger-menu .main-nav-mobile:hover,
-.hamburger-menu .search:hover,
-.hamburger-menu .socials:hover {
-  color: var(--accent);
-}
-
 .main-nav-mobile {
   min-width: 37px; /* To stop flex from changing positioning due to html change */
 }
