@@ -13,12 +13,6 @@
 -----------------------------
 */
 
-@font-face {
-  font-family: "Game Played";
-  src: local("Game Played"), local("Game Played"), url("fonts/GamePlayed.otf") format("opentype");
-  font-display: swap;
-}
-
 /* Variables */
 :root {
   --primary: #161719;
