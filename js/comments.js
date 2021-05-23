@@ -127,12 +127,13 @@ function submitCheckAll() {
 
 async function postComment() {
   const [commentName, commentEmail, commentMessage] = formInputs();
-  const commentData = JSON.stringify({
+  const data = {
     author_name: commentName.value,
     author_email: commentEmail.value,
     content: commentMessage.value,
     post: ID,
-  });
+  };
+  const commentData = JSON.stringify(data);
 
   const options = {
     headers: { "Content-Type": "application/json" },

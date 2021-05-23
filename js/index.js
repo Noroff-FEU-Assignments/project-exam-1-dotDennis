@@ -16,8 +16,6 @@ async function fetchPosts() {
 
     carouselTrack.innerHTML = "";
 
-    console.log(carouselTrack.innerHTML);
-
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
       carouselTrack.innerHTML += buildCarousel(json[i]);
