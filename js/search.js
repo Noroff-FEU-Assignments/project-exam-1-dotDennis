@@ -1,5 +1,5 @@
 // Import posts (url)
-import { POSTS, buildBlog, buildError } from "./components/global.js"
+import { POSTS, buildBlog, buildError } from "./components/global.js";
 
 // select containers
 const postsContainer = document.querySelector("section");
@@ -16,9 +16,6 @@ const params = new URLSearchParams(queryString);
 let search = params.get("q");
 
 let url = `https://dennisl.no/blogAPI//wp-json/relevanssi/v1/search?s=${search}&posts_per_page=15&_embed`;
-
-
-
 
 // change url & document.title if there's no querystring passed.
 if (!search) {
@@ -50,7 +47,7 @@ async function getSearchResults() {
       }
     }
   } catch (error) {
-    main.innerHTML = buildError()
+    main.innerHTML = buildError();
     console.log(error);
   } finally {
     loader.outerHTML = "";
@@ -58,4 +55,3 @@ async function getSearchResults() {
 }
 
 getSearchResults();
-

@@ -1,5 +1,5 @@
 import { ID, buildComments } from "./components/global.js";
-import { commentSection } from "./post.js"
+import { commentSection } from "./post.js";
 
 const commentsAPI = "https://dennisl.no/blogAPI/wp-json/wp/v2/comments?per_page=100";
 
@@ -20,9 +20,7 @@ function buildCommentSection(commentsArr) {
   }
 
   commentsArr.forEach((comment) => {
-
-
-    commentSection.firstElementChild.nextElementSibling.innerHTML += buildComments(comment)
+    commentSection.firstElementChild.nextElementSibling.innerHTML += buildComments(comment);
   });
 }
 
@@ -33,7 +31,8 @@ const form = document.querySelector(".comment-form");
 const submitButton = document.querySelector(".comment-send-btn");
 
 function validateEmail(email) {
-  const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEx =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const patternMatches = regEx.test(email.value);
   return patternMatches;
 }
@@ -100,7 +99,11 @@ formInputs().forEach((element) => {
 // If this is passed, form is valid.
 function validForm() {
   const [commentName, commentEmail, commentMessage] = formInputs();
-  const isInputValidArr = [checkLength(commentName, 5), validateEmail(commentEmail), checkLength(commentMessage, 25)];
+  const isInputValidArr = [
+    checkLength(commentName, 5),
+    validateEmail(commentEmail),
+    checkLength(commentMessage, 25),
+  ];
 
   // if n (in this case, the array objects) === true, it will return true, otherwise no return.
   function isTrue(n) {
@@ -155,9 +158,9 @@ async function postComment() {
         const yOffset = -element.getBoundingClientRect().height - 20;
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y });
-        commentName.removeAttribute("style")
-        commentEmail.removeAttribute("style")
-        commentMessage.removeAttribute("style")
+        commentName.removeAttribute("style");
+        commentEmail.removeAttribute("style");
+        commentMessage.removeAttribute("style");
       }
     } catch (error) {
       console.log(error);

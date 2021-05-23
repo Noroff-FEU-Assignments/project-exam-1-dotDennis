@@ -38,7 +38,6 @@ main section .contact-form {
   max-height: 350px;
 }
 
-
 .contact-form label {
   margin-top: 1.5rem;
   font-size: 1.2rem;
@@ -46,7 +45,7 @@ main section .contact-form {
   margin-bottom: 5px;
 }
 
-.contact-form label[for=fullName] {
+.contact-form label[for="fullName"] {
   margin-top: 0;
 }
 
@@ -111,11 +110,16 @@ section {
   cursor: pointer;
 }
 
+.success-container.sent i {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  color: var(--off-white);
+}
+
 .success-container.new {
   transition: transform 0.4s ease;
 }
-
-
 
 @media screen and (min-width: 1000px) {
   .fullName div:first-child {

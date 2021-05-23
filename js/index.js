@@ -16,7 +16,7 @@ async function fetchPosts() {
 
     carouselTrack.innerHTML = "";
 
-    console.log(carouselTrack.innerHTML)
+    console.log(carouselTrack.innerHTML);
 
     for (let i = 0; i < json.length; i++) {
       // declare json data that will be used for creating the html
@@ -92,8 +92,7 @@ async function fetchPosts() {
       setTimeout(function () {
         carouselTrack.style.transition = `transform 0.33s ease-out`;
       });
-    
-    }); 
+    });
   } catch (error) {
     // if there's an error - display error to user
     main.innerHTML = buildError();
@@ -103,7 +102,6 @@ async function fetchPosts() {
     loader.outerHTML = ``;
 
     // add carousel functionality (has to be done in the finally, as element has to be selected. Great if there's issues in the api call)
-    
   }
 }
 

@@ -30,7 +30,10 @@ function addClass(event) {
   // socials expand
   if (event.target.classList.contains("fa-ellipsis-h")) {
     event.target.outerHTML = `<i class="fas fa-times socials-nav"></i>`;
-    if (socialsContainer.classList.contains("slide-out") || socialsContainer.classList.contains("wait")) {
+    if (
+      socialsContainer.classList.contains("slide-out") ||
+      socialsContainer.classList.contains("wait")
+    ) {
       socialsContainer.classList.add("slide-in");
       socialsContainer.classList.remove("wait");
       socialsContainer.classList.remove("slide-out");

@@ -1,5 +1,5 @@
 // Import posts (url)
-import { POSTS, buildBlog, buildError } from "./components/global.js"
+import { POSTS, buildBlog, buildError } from "./components/global.js";
 
 const productsContainer = document.querySelector("section");
 const moreButton = document.querySelector(".view-more");
@@ -28,7 +28,7 @@ async function getPosts() {
     }
   } catch (error) {
     // if there's an error - display error to user
-    main.innerHTML = buildError()
+    main.innerHTML = buildError();
     console.log(error);
   } finally {
     // remove loader

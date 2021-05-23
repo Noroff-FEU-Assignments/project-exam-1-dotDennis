@@ -1,25 +1,23 @@
 // Import posts (url)
-import { POSTS, ID, buildPost, buildModal, buildError } from "../js/components/global.js"
-
+import { POSTS, ID, buildPost, buildModal, buildError } from "../js/components/global.js";
 
 // select containers
-const postContainer = document.querySelector("article");
+const postContainer = document.querySelector(".post-container");
 const modalContainer = document.querySelector(".modals");
 const main = document.querySelector("main");
-
+const loader = document.querySelector(".loader");
 
 const api = `${POSTS}/${ID}?_embed`;
 
 // redirect if id = null;
 if (!ID) {
-  location.href = "index.html";
+  location.href = "/";
 }
 
 // run a function to fetch the data from the api
 async function fetchPost() {
   try {
-
-    const response = await fetch(api)
+    const response = await fetch(api);
     const json = await response.json();
     postContainer.innerHTML = buildPost(json);
 
@@ -29,11 +27,10 @@ async function fetchPost() {
 
     document.title = `${document.title} ${json.title.rendered}`;
   } catch (error) {
-    main.innerHTML = buildError()
-    console.log(error)
+    main.innerHTML = buildError();
+    console.log(error);
   } finally {
-    postContainer.classList.remove("loader");
-    postContainer.classList.add("post-container");
+    loader.outerHTML = "";
 
     // Modal (get a full-view of image, fullscreen on mobile with X in top right.)
     const postImages = document.querySelectorAll(".post-container img");
@@ -64,4 +61,4 @@ function expandComments() {
   document.querySelector("#expandComments").style.display = "none";
 }
 
-export { commentSection }
+export { commentSection };

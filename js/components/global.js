@@ -222,14 +222,15 @@ function buildModal(src, alt, caption) {
     </div>`;
 }
 function buildComments(comment) {
-
   const date = new Date(comment.date);
   const format = { day: "numeric", month: "long", year: "numeric" };
   const dateFormatted = date.toLocaleString("en-GB", format);
   return `
               <div>
                  <header class="comment-header">
-                     <img src="${comment.author_avatar_urls[96]}" alt="${comment.author_name}'s avatar">
+                     <img src="${comment.author_avatar_urls[96]}" alt="${
+    comment.author_name
+  }'s avatar">
                      <h3>${comment.author_name}</h3>
                      <span>·</span>
                      <p>${dateFormatted + " " + comment.date.split("T")[1].substring(0, 5)}</p>
@@ -254,4 +255,12 @@ function buildContactError(errorMessage) {
         </div>`;
 }
 
-export { buildCarousel, buildBlog, buildPost, buildModal, buildComments, buildError, buildContactError };
+export {
+  buildCarousel,
+  buildBlog,
+  buildPost,
+  buildModal,
+  buildComments,
+  buildError,
+  buildContactError,
+};
