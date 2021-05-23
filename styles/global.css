@@ -71,6 +71,7 @@ h1 {
   -webkit-text-stroke: var(--primary) 1px;
   padding: 1rem 0;
   white-space: nowrap;
+  font-display: swap;
 }
 
 /* Page specific titles */
